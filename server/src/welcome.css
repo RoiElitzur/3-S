@@ -1,0 +1,24 @@
+.welcome{
+ 
+    background-color:aliceblue;
+    position: relative;
+   
+}
+
+.container-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+  .w_l{
+    margin-right:10%
+}
+
+
+
+
+
+
+

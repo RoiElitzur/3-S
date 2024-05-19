@@ -1,0 +1,27 @@
+.register{
+    background-color:aliceblue;
+    position: relative;
+  
+}
+
+
+.container-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+  #x{
+    margin-right: 10px;
+  }
+  #preview{
+        width: 150px;
+        height: 100px;
+  }
+
+  .r-margin{
+    margin-top: 10px;
+  }
+
+ 
