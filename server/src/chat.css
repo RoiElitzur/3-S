@@ -8,7 +8,7 @@
     z-index: 2;
 }
 body{
-    background: linear-gradient(to bottom, rgb(10, 202, 100) 30%, rgb(223, 232, 241) 30%);
+    background: linear-gradient(180deg, #4a148c, #1a1a1a);
     background-size: 100% 100%;
     position: relative;
     z-index: 1;
@@ -25,7 +25,6 @@ body{
    background-color: aliceblue;
    position: relative;
    display: flex;
-    top: 50;
    /* align-items: center; */
    margin: auto;
 }
