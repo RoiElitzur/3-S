@@ -1,27 +1,126 @@
-.register{
-    background-color:aliceblue;
-    position: relative;
-  
+/*.register{*/
+/*    background-color:aliceblue;*/
+/*    position: relative;*/
+
+/*}*/
+
+
+/*.container-center {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  height: 100%;*/
+/*}*/
+
+/*  #x{*/
+/*    margin-right: 10px;*/
+/*  }*/
+/*  #preview{*/
+/*        width: 150px;*/
+/*        height: 100px;*/
+/*  }*/
+
+/*  .r-margin{*/
+/*    margin-top: 10px;*/
+/*  }*/
+
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-
-.container-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
 }
 
-  #x{
-    margin-right: 10px;
-  }
-  #preview{
-        width: 150px;
-        height: 100px;
-  }
+.error-list{
+    color: #ff6b6b;
+}
+.register {
+    background: linear-gradient(180deg, #4a148c, #1a1a1a);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
 
-  .r-margin{
-    margin-top: 10px;
-  }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
 
- 
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-button {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3%;
+    background-color: rgba(13, 9, 41, 0.51); /* Semi-transparent background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+    max-width: 500px; /* Width restriction */
+    margin: 20px; /* Margin to avoid touching edges */
+}
+
+.headline {
+    font-size: 2.5em;
+    margin-bottom: 60px;
+    font-weight: bold;
+}
+
+.input-field {
+    width: 80%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.primary-button {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.redirect {
+    margin-top: 20px;
+    color: white;
+}
+
+.redirect-link {
+    color: #6bcfff;
+    text-decoration: none;
+}
+
+.brand {
+    font-weight: bold;
+    font-size: xxx-large;
+}

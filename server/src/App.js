@@ -1,6 +1,8 @@
 import Welcome from './Welcome/Welcome.js';
 import Register from './Register/Register.js';
 import Chat from './Chat/Chat.js';
+import SolutionTable from "./SolutionTable.js";
+import './SolutionTable.css'
 import './App.css';
 import Landing from './Landing/Landing.js'
 import users from './users/users.js';
@@ -28,6 +30,8 @@ function App() {
   return(
   <BrowserRouter>
     <Routes>
+      <Route path="/solution" element={<SolutionTable/>}>
+      </Route>
     <Route
           path="/register" element={<Register onWelcomeClick={() => handleViewChange('welcome')}
         onRegisterSubmit={() => handleViewChange('welcome')} />}>
