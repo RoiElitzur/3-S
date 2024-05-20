@@ -1,10 +1,8 @@
 import Welcome from './Welcome/Welcome.js';
 import Register from './Register/Register.js';
 import Chat from './Chat/Chat.js';
-import './welcome.css';
-import './chat.css'
-import './register.css'
 import './App.css';
+import Landing from './Landing/Landing.js'
 import users from './users/users.js';
 import { useState } from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
@@ -35,8 +33,12 @@ function App() {
         onRegisterSubmit={() => handleViewChange('welcome')} />}>
       </Route>
       <Route path="/chat" element={<ChatRoute />} ></Route>
-      <Route path="/" element={<Welcome onRegisterClick={() => handleViewChange('register')}
-              onValidSubmit={() => handleViewChange('chat')} setName={setUsername} setToken={setToken} socket={socket}/>}>
+      <Route path="/login" element={<Welcome onRegisterClick={() => handleViewChange('register')}
+                                        onValidSubmit={() => handleViewChange('chat')} setName={setUsername} setToken={setToken} socket={socket}/>}>
+      </Route>
+      <Route path="/" element={<Landing onRegisterClick={() => handleViewChange('register')}
+                                                          onLoginClick={() => handleViewChange('login')} />} >
+
       </Route>
     </Routes>
   </BrowserRouter>);

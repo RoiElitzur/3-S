@@ -1,0 +1,184 @@
+
+@import url("https://fonts.googleapis.com/css?family=Inter:800,500,700,600");
+
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/*html, body {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    margin: 0;*/
+/*}*/
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/*body {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    background: linear-gradient(180deg, #4a148c, #1a1a1a);*/
+/*    color: #ffffff;*/
+/*    overflow: hidden;*/
+/*}*/
+
+
+.landing {
+    background: linear-gradient(180deg, #4a148c, #1a1a1a);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+/*.landing {*/
+/*    background: linear-gradient(180deg, #4a148c, #1a1a1a);*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    padding: 20px;*/
+/*    text-align: center;*/
+/*    display: flex;*/
+/*    !*flex-direction: column;*!*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    position: relative;*/
+/*}*/
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+}
+
+.brand {
+    font-size: 36px;
+    font-weight: 800;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-button {
+    color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-button:hover {
+    color: #0a9cee;
+}
+
+.hero-content {
+    margin-top: 200px;
+}
+
+.headline {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.subheadline {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.highlight {
+    color: #0a9cee;
+}
+
+.buttons {
+    justify-content: center;
+    gap: 20px;
+}
+
+/*.primary-button, .secondary-button {*/
+/*    padding: 15px 30px;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    font-size: 18px;*/
+/*    cursor: pointer;*/
+/*    transition: background 0.3s ease;*/
+/*}*/
+
+.primary-button, .secondary-button {
+    min-width: 150px;
+    padding: 15px 30px; /* Keep padding for spacing inside the button */
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: bold;
+    margin:20px;
+}
+
+
+.primary-button {
+    background-color: #ff6b6b;
+    color: #ffffff;
+}
+
+.primary-button:hover {
+    background-color: #e05e5e;
+}
+
+.secondary-button {
+    background-color: #00cec9;
+    color: #ffffff;
+}
+
+.secondary-button:hover {
+    background-color: #00b4b3;
+}
+
+.hero-image {
+    max-width: 50%;
+    height: auto;
+    margin-top: 40px;
+    border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+    .headline {
+        font-size: 32px;
+    }
+
+    .subheadline {
+        font-size: 18px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .primary-button, .secondary-button {
+        width: 100%;
+    }
+
+    .hero-image {
+        max-width: 80%;
+    }
+}
+
+

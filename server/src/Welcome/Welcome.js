@@ -3,29 +3,16 @@ import Welcome_Password from "./Welcome_Password.js";
 import Welcome_User_Name from "./Welcome_User_Name.js";
 import { useRef, useState, useEffect } from "react";
 import users from '../users/users.js';
-
+import '../welcome.css';
+import { Link , useNavigate} from 'react-router-dom';
 function Welcome(props){
     const usernameRef = useRef("");
     const passRef = useRef("");
-    const [errorList,setErrosList] = useState("");
-    const validate = function(){
-        if(usernameRef.current.value === "") {
-            setErrosList("Please insert user name");
-            return false;
-           }
-        if(passRef.current.value.length < 8) {
-             setErrosList("The password must be at least 8 charecters");
-             return false;
-        }
-        // if(users.some((user) => usernameRef.current.value === user.username && passRef.current.value === user.password)){
-        //     return true;
-        // }
-        // else{
-        //     setErrosList("One of the details is invalid, please try again");
-        //     return false;
-        // }
-        return true;
-    }
+    const [errorList,setErrorsList] = useState("");
+    const navigate = useNavigate();
+
+
+
 
      async function checkLogin (){
             const data = {
@@ -65,17 +52,31 @@ function Welcome(props){
             }     
     }
 
+    const validate = function(){
+         setErrorsList("");
+        if(usernameRef.current.value === "") {
+            setErrorsList("Please insert user name");
+            return false;
+        }
+        if(passRef.current.value.length < 8) {
+            setErrorsList("The password must be at least 8 characters");
+            return false;
+        }
+        return true;
+    }
+
+
      const handleSubmit = async (event) =>{
         event.preventDefault();
         if(validate()){
-            if(await checkLogin()) {
-                props.setName(usernameRef.current.value);
-                props.onValidSubmit();
-                return true;
-            } else {
-                setErrosList("One of the details is invalid, please try again");
-                return false;
-            }
+            // if(await checkLogin()) {
+            //     // props.setName(usernameRef.current.value);
+            //     // props.onValidSubmit();
+            //     return true;
+            // } else {
+            //     setErrorsList("One of the details is invalid, please try again");
+            //     return false;
+            // }
         }
     }
 
@@ -89,24 +90,41 @@ function Welcome(props){
     //     }, [])});
 
 
-    return(
-         <div className="container-fluid container-center">
-        <form className="welcome container">
-        <div>
-          {errorList}
-        </div>   
-        <br></br>
-        <Welcome_User_Name refName={usernameRef}/>
-        <br></br>
-        <br></br>
-        <Welcome_Password refName1={passRef}/>  
-        <br></br>
-        <br></br>
-        <Welcome_Login_Register onLinkClick={props.onRegisterClick} onSubmit={handleSubmit}/>
-        <br></br>
-        </form>
+    const handleSignUpClick = (event) =>{
+        event.preventDefault(); // prevent form submission
+        props.onRegisterClick();
+        navigate('/register');
+    }
+
+    return (
+        <div className="login">
+            <div className="navbar">
+                <div className="brand">3-S</div>
+                <div className="nav-links">
+                    <a href="#" className="nav-button">About</a>
+                    <a href="#" className="nav-button">Preferences</a>
+                    <a href="#" className="nav-button">Solutions List</a>
+                    <a href="#" className="nav-button">Solution Preview</a>
+                    <a href="#" className="nav-button">Contact us</a>
+                </div>
+            </div>
+            <div className="form-container">
+                <h1 className="headline">Login</h1>
+                <div>
+                    {errorList}
+                </div>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" className="input-field" placeholder="Username" ref={usernameRef}/>
+                    <input type="password" className="input-field" placeholder="Password" ref={passRef}/>
+                    <br></br>
+                    <button type="submit" className="primary-button">Login</button>
+                </form>
+                <p className="redirect">
+                    Don't have an account? <Link to="/login" onClick={handleSignUpClick} className="redirect-link">Sign Up</Link>
+                </p>
+            </div>
         </div>
-        )
-       
+    )
 }
+
 export default Welcome;

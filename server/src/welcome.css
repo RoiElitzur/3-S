@@ -1,20 +1,114 @@
-.welcome{
- 
-    background-color:aliceblue;
-    position: relative;
-   
+
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.container-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden; /* Ensure no horizontal overflow */
 }
 
-  .w_l{
-    margin-right:10%
+
+.login {
+    background: linear-gradient(180deg, #4a148c, #1a1a1a);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full height */
+    width: 100vw; /* Full width */
+    text-align: center;
+    color: white;
 }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-button {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/*.form-container {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    text-align: center;*/
+/*    padding: 20px;*/
+/*    background-color: rgba(13, 9, 41, 0.51);*/
+/*}*/
+
+/*.headline {*/
+/*    font-size: 2.5em;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3%;
+    background-color: rgba(13, 9, 41, 0.51);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    margin: 20px;
+}
+
+.headline {
+    font-size: 2.5em;
+    margin-bottom: 60px;
+    font-weight: bold;
+}
+
+.input-field {
+    width: 80%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.primary-button {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.redirect {
+    margin-top: 20px;
+    color: white;
+}
+
+.redirect-link {
+    color: #6bcfff;
+    text-decoration: none;
+}
+
 
 
 
