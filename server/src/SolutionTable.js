@@ -1,4 +1,4 @@
-
+import './SolutionTable.css'
 
 function solutionTable(props) {
     return(

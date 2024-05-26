@@ -1,4 +1,5 @@
 .schedule-container {
+    background: linear-gradient(180deg, #4a148c, #1a1a1a);
     padding: 20px;
     text-align: center;
 }
