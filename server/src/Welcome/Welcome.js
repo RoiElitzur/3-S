@@ -19,11 +19,11 @@ function Welcome(props){
             username: usernameRef.current.value,
             password: passRef.current.value
             }
-            // Send post request to the server asynchrounously
-            // fetch sends the asynchrounous request
+            // Send post request to the server asynchronously
+            // fetch sends the asynchronous request
             // The request is sent to the server according to the url that was set in: document.forms[0].action
             // The await keyword ensures that 'res' will have the result from the server.
-            // even though 'fetch' is asynchrounous
+            // even though 'fetch' is asynchronous
             
             try {
                 const res = await fetch('http://localhost:12345/Tokens', {
@@ -69,14 +69,15 @@ function Welcome(props){
      const handleSubmit = async (event) =>{
         event.preventDefault();
         if(validate()){
-            // if(await checkLogin()) {
-            //     // props.setName(usernameRef.current.value);
-            //     // props.onValidSubmit();
-            //     return true;
-            // } else {
-            //     setErrorsList("One of the details is invalid, please try again");
-            //     return false;
-            // }
+            if(await checkLogin()) {
+                props.setName(usernameRef.current.value);
+                props.onValidSubmit();
+                navigate('/solution');
+                return true;
+            } else {
+                setErrorsList("One of the details is invalid, please try again");
+                return false;
+            }
         }
     }
 

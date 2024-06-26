@@ -21,7 +21,7 @@ app.set('view engine', 'ejs');
 app.use('/Chats', routerChats);
 app.use('/Users', routerUsers);
 app.use('/Tokens', routerToken);
-mongoose.connect("mongodb://127.0.0.1:27017", {
+mongoose.connect("mongodb://127.0.0.1:27017/3S", {
     useNewUrlParser: true,
     useUnifiedTopology: true});
 

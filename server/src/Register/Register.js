@@ -43,19 +43,28 @@ function Register(props) {
           setErrosList("Please confirm the password again");
           return false;
         }
+        if(inputEmail.current.value === "") {
+            setErrosList("Please insert email");
+            return false;
+        }
+        const data = {
+            username: inputUserName.current.value,
+            password: inputPassword.current.value,
+            email: inputEmail.current.value
+        }
           const res = await fetch('http://localhost:12345/Users', {
           method: "POST",
           headers: {
           'Content-Type': 'application/json',
         },
-          // 'body': JSON.stringify(temp),
+          'body': JSON.stringify(data),
         });
-        //if res.status !== 200 it means that there is a conflict because the username alread exists
+        //if res.status !== 200 it means that there is a conflict because the username already exists
         if(res.status !== 200) {
           setErrosList("Username already exist");
           return false;
         }
-        setValid("Registeration completed successfully");
+        setValid("Registration completed successfully");
         props.onRegisterSubmit();
         return true;
 
@@ -80,8 +89,8 @@ function Register(props) {
                     </div>
                     <input type="text" className="input-field" placeholder="Username" ref={inputUserName}/>
                     <input type="email" className="input-field" placeholder="Email" ref={inputEmail}/>
-                    <input type="password" className="input-field" placeholder="Confirm password" ref={inputPassword}/>
-                    <input type="password" className="input-field" placeholder="Renter" ref={inputPasswordValidation}/>
+                    <input type="password" className="input-field" placeholder="Enter password" ref={inputPassword}/>
+                    <input type="password" className="input-field" placeholder="Confirm password" ref={inputPasswordValidation}/>
                     <br></br>
                     <button type="submit" className="primary-button">Sign Up</button>
                 </form>
