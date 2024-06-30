@@ -1,4 +1,4 @@
-import '../landing.css'
+import './landing.css'
 import { Link , useNavigate} from 'react-router-dom';
 function Landing(props) {
     const navigate = useNavigate();
