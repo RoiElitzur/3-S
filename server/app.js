@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import routerChats from './routes/chat.js'
 import routerUsers from './routes/user.js'
 import routerToken from './routes/token.js'
+import routerCourse from './routes/course.js'
 import { Server } from 'socket.io';
 import express from "express";
 import cors from "cors";
@@ -21,6 +22,7 @@ app.set('view engine', 'ejs');
 app.use('/Chats', routerChats);
 app.use('/Users', routerUsers);
 app.use('/Tokens', routerToken);
+app.use('/Courses',routerCourse);
 mongoose.connect("mongodb://127.0.0.1:27017/3S", {
     useNewUrlParser: true,
     useUnifiedTopology: true});

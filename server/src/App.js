@@ -39,7 +39,7 @@ function App() {
       </Route>
       <Route path="/chat" element={<ChatRoute />} ></Route>
       <Route path="/login" element={<Welcome onRegisterClick={() => handleViewChange('register')}
-                                        onValidSubmit={() => handleViewChange('solution')} setName={setUsername} setToken={setToken} socket={socket}/>}>
+                                        onValidSubmit={() => handleViewChange('preferences')} setName={setUsername} setToken={setToken} socket={socket}/>}>
       </Route>
       <Route path="/" element={<Landing onRegisterClick={() => handleViewChange('register')}
                                                           onLoginClick={() => handleViewChange('login')} />} >

@@ -72,7 +72,7 @@ function Welcome(props){
             if(await checkLogin()) {
                 props.setName(usernameRef.current.value);
                 props.onValidSubmit();
-                navigate('/solution');
+                navigate('/preferences');
                 return true;
             } else {
                 setErrorsList("One of the details is invalid, please try again");

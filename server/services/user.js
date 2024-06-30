@@ -1,7 +1,7 @@
 import User from '../models/user.js';
 import FireBaseToken from '../models/fireBaseToken.js';
 import jwt from 'jsonwebtoken'
-
+import Course from '../models/course.js';
 import admin from 'firebase-admin';
 
 // import serviceAccount from '../makore-8407b-firebase-adminsdk-vnd15-25ae054a5b.json' assert {type: 'json'};
@@ -19,7 +19,6 @@ const  serviceAccount = {
     "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-vnd15%40makore-8407b.iam.gserviceaccount.com",
     "universe_domain": "googleapis.com"
   }
-
 
 
 admin.initializeApp({

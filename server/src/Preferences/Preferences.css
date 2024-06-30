@@ -1,7 +1,3 @@
-
-
-
-
 .preferences-container {
     background: linear-gradient(180deg, #4a148c, #1a1a1a);
     padding: 40px;
@@ -25,13 +21,15 @@
 .form-group {
     width: 100%;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 label {
     display: block;
     font-size: 1em;
     margin-bottom: 5px;
-    text-align: center;
     color: white;
 }
 
@@ -41,7 +39,14 @@ label {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1em;
+}
 
+.select-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .submit-button {
