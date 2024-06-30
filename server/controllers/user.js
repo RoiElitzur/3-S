@@ -5,7 +5,7 @@ const createUser = async(req, res) => {
     if(await userService.isUsernameExists(req.body.username) === true) {
         return res.status(409).send();  
     }
-    await userService.createUser(req.body.username, req.body.password, req.body.displayName, req.body.profilePic);
+    await userService.createUser(req.body.username, req.body.password, req.body.email);
     return res.status(200).send();
 };
 

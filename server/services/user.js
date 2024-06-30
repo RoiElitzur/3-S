@@ -71,9 +71,9 @@ const sendNotification =  async (otherUser, loginUser, body, token, chatId, pict
     }
 };
 
-const createUser = async (username, password, displayName, profilePic) => {
+const createUser = async (username, password, email) => {
     
-    const user = new User({username, password, displayName, profilePic});
+    const user = new User({username, password, email});
     return await user.save();
 };
 

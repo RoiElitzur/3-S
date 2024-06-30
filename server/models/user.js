@@ -9,16 +9,10 @@ const User = new Schema ( {
         type: String,
         required: true
     },
-    'displayName': {
+    'email': {
         type: String, 
         required: true
-    },
-    'profilePic': {
-        type: String,
-        required: false
     }
-
-
 });
 
 // module.exports = mongoose.model('User', User);
