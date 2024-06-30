@@ -1,0 +1,81 @@
+
+
+
+
+.preferences-container {
+    background: linear-gradient(180deg, #4a148c, #1a1a1a);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.headline {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.preferences-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 1em;
+    margin-bottom: 5px;
+    text-align: center;
+    color: white;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+
+}
+
+.submit-button {
+    background-color: #4a148c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #6a1b9a;
+}
+
+@media screen and (max-width: 768px) {
+    .preferences-container {
+        padding: 20px;
+    }
+
+    .input-field, .submit-button {
+        font-size: 0.9em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .headline {
+        font-size: 1.5em;
+    }
+
+    .input-field, .submit-button {
+        font-size: 0.8em;
+    }
+}

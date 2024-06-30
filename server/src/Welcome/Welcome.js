@@ -3,7 +3,7 @@ import Welcome_Password from "./Welcome_Password.js";
 import Welcome_User_Name from "./Welcome_User_Name.js";
 import { useRef, useState, useEffect } from "react";
 import users from '../users/users.js';
-import '../welcome.css';
+import './welcome.css';
 import { Link , useNavigate} from 'react-router-dom';
 function Welcome(props){
     const usernameRef = useRef("");

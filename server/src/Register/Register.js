@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {useRef} from 'react';
 import { Link , useNavigate} from 'react-router-dom';
-import '../register.css'
+import './register.css'
 
 
 function Register(props) {
@@ -89,8 +89,8 @@ function Register(props) {
                     </div>
                     <input type="text" className="input-field" placeholder="Username" ref={inputUserName}/>
                     <input type="email" className="input-field" placeholder="Email" ref={inputEmail}/>
-                    <input type="password" className="input-field" placeholder="Enter password" ref={inputPassword}/>
-                    <input type="password" className="input-field" placeholder="Confirm password" ref={inputPasswordValidation}/>
+                    <input type="password" className="input-field" placeholder="Confirm password" ref={inputPassword}/>
+                    <input type="password" className="input-field" placeholder="Renter password" ref={inputPasswordValidation}/>
                     <br></br>
                     <button type="submit" className="primary-button">Sign Up</button>
                 </form>
