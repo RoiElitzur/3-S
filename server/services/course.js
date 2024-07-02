@@ -1,13 +1,14 @@
 import Course from '../models/course.js'
 
 
-const createSchedule = async (info) =>
+const createSchedule = async () =>
 {
-    const courses = info.courses;
-    const wantedCourses = await Course.find({ courseNum: { $in: info } });
+    const courses = await Course.find({});
+    console.log(courses);
+    //const wantedCourses = await Course.find({ courseNum: { $in: info } });
     //createDocument;
     //execvp(Python);
-    return wantedCourses;
+    return courses;
 }
 
 
