@@ -1,9 +1,13 @@
 import courseService from "../services/course.js";
 
-const createSchedule = async(req,res) =>{
-    const courses = await courseService.createSchedule();
+const getCourses = async(req,res) =>{
+    const courses = await courseService.getCourses();
     res.status(200).send(courses);
 }
 
+const createSolutions = async(req,res) => {
+    const solutions = await courseService.createSolutions(req.body);
+    res.status(200).send(solutions);
+}
 
-export default {createSchedule}
+export default {getCourses,createSolutions}

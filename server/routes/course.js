@@ -3,8 +3,8 @@ import courseController from '../controllers/course.js';
 const router = express.Router();
 
 
-router.get('/', courseController.createSchedule);
-
+router.get('/', courseController.getCourses);
+router.post('/',courseController.createSolutions)
 
 
 export default router;

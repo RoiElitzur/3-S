@@ -1,17 +1,14 @@
-
 import './Preferences.css';
 import { useState, useEffect } from 'react';
 import Select from 'react-select';
 
-
-//const navigate = useNavigate();
-
-
-
-
 function Preferences() {
     const [courses, setCourses] = useState([]);
-    const [selectedOptions, setSelectedOptions] = useState([]);
+    const [selectedCourses, setSelectedCourses] = useState([]);
+    const [numCoursesToGiveUpOptions, setNumCoursesToGiveUpOptions] = useState([]);
+    const [mustCoursesOptions, setMustCoursesOptions] = useState([]);
+    const [selectedNumDays,setSelectedNumDays] = useState();
+    const [daysOrCourses,setDaysOrCourses] = useState();
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -24,11 +21,12 @@ function Preferences() {
 
             if (res.status === 200) {
                 const data = await res.json();
-                const courseNumbers = data.map(course => ({
+                const courseOptions = data.map(course => ({
                     value: course.courseNum,
                     label: course.courseName,
+                    id: course._id
                 }));
-                setCourses(courseNumbers);
+                setCourses(courseOptions);
             } else {
                 console.error('Error fetching courses');
             }
@@ -37,31 +35,53 @@ function Preferences() {
         fetchCourses();
     }, []);
 
-    const handleSubmit = async (event) => {
-        event.preventDefault(); // prevent form submission
-        if (await validate() === true) {
-            // navigate('/');
-        } // call the validation function
-    };
+    useEffect(() => {
+        const giveUpOptions = Array.from({ length: selectedCourses.length + 1 }, (_, i) => ({
+            value: i,
+            label: i.toString(),
+        }));
+        setNumCoursesToGiveUpOptions(giveUpOptions);
 
-    const validate = async function() {
-        const res = await fetch('http://localhost:12345/Courses', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        if (res.status === 200) {
-            const data = await res.json();
-            console.log(data);
-            return data;
-        }
-        return [];
-    };
+        const mustCourses = selectedCourses.map(course => ({
+            value: course.value,
+            label: course.label,
+            id: course._id
+        }));
+        setMustCoursesOptions(mustCourses);
+    }, [selectedCourses]);
 
     const handleSelectChange = (selectedOptions) => {
-        setSelectedOptions(selectedOptions);
+        setSelectedCourses(selectedOptions);
+    };
+    const handleSelectChangeNumDays = (selectedOptions) =>{
+        setSelectedNumDays(selectedOptions);
+    }
+    const handleChangeDaysOrCourses = (selectedOptions) =>{
+        setDaysOrCourses(selectedOptions);
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const data = {
+            selectedCourses: selectedCourses,
+            numDays: selectedNumDays,
+            daysOrCourses : daysOrCourses,
+            giveUpOptions: numCoursesToGiveUpOptions,
+            mustCourses: mustCoursesOptions,
+        }
+        console.log(data);
+        const res = await fetch('http://localhost:12345/Courses', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            'body': JSON.stringify(data),
+        });
+        if(res.status !== 200) {
+            return;
+        }
+        //navigate('/Solutions');
     };
 
     return (
@@ -76,7 +96,7 @@ function Preferences() {
                         className="input-field"
                         isMulti
                         options={courses}
-                        value={selectedOptions}
+                        value={selectedCourses}
                         onChange={handleSelectChange}
                         closeMenuOnSelect={false}
                         placeholder="Choose courses"
@@ -84,36 +104,63 @@ function Preferences() {
                 </div>
                 <div className="form-group">
                     <label htmlFor="NumDays">How many days in schedule</label>
-                    <select id="NumDays" name="NumDays" defaultValue="-1" className="input-field">
-                        <option value="-1" disabled>Select number of days...</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
+                    <Select
+                        id="NumDays"
+                        name="NumDays"
+                        className="input-field"
+                        options={[
+                            { value: '1', label: '1' },
+                            { value: '2', label: '2' },
+                            { value: '3', label: '3' },
+                            { value: '4', label: '4' },
+                            { value: '5', label: '5' },
+                            { value: '6', label: '6' }
+                        ]}
+                        value={selectedNumDays}
+                        onChange={handleSelectChangeNumDays}
+                        placeholder="Select number of days..."
+                    />
                 </div>
                 <div className="form-group">
                     <label htmlFor="less-days-more-courses">More courses or less days</label>
-                    <select id="less-days-more-courses" name="less-days-more-courses" defaultValue="-1" className="input-field">
-                        <option value="-1">Select option...</option>
-                        <option value="0">More courses</option>
-                        <option value="1">Less days</option>
-                    </select>
+                    <Select
+                        id="less-days-more-courses"
+                        name="less-days-more-courses"
+                        className="input-field"
+                        options={[
+                            { value: '0', label: 'More courses' },
+                            { value: '1', label: 'Less days' }
+                        ]}
+                        value={daysOrCourses}
+                        onChange={handleChangeDaysOrCourses}
+                        placeholder="Select option..."
+                    />
                 </div>
                 <div className="form-group">
                     <label htmlFor="courses-to-give-up">How many courses you are willing to give up if at all</label>
-                    <input type="number" id="courses-to-give-up" className="input-field" placeholder="Enter amount of courses" />
+                    <Select
+                        id="courses-to-give-up"
+                        name="courses-to-give-up"
+                        className="input-field"
+                        options={numCoursesToGiveUpOptions}
+                        placeholder="Enter amount of courses"
+                    />
                 </div>
                 <div className="form-group">
                     <label htmlFor="courses-must-be-in-schedule">Courses that must be in schedule</label>
-                    <input type="text" id="courses-must-be-in-schedule" className="input-field" placeholder="Enter id of courses e.g: 81274, 81381, ..." />
+                    <Select
+                        id="courses-must-be-in-schedule"
+                        name="courses-must-be-in-schedule"
+                        className="input-field"
+                        isMulti
+                        options={mustCoursesOptions}
+                        placeholder="Choose courses"
+                    />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="non-related-anchors">Non related anchors in schedule</label>
-                    <input type="text" id="non-related-anchors" className="input-field" placeholder="Day, HH:MM, Duration in minutes, Task Name" />
-                </div>
+                {/*<div className="form-group">*/}
+                {/*    <label htmlFor="non-related-anchors">Non related anchors in schedule</label>*/}
+                {/*    <input type="text" id="non-related-anchors" className="input-field" placeholder="Day, HH:MM, Duration in minutes, Task Name" />*/}
+                {/*</div>*/}
                 <button type="submit" className="submit-button">Save Preferences</button>
             </form>
         </div>
