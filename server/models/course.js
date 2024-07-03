@@ -16,11 +16,27 @@ const Course = new Schema ({
                     required: true
                 }
             }]
+        },
+        'day': {
+            type: String,
+            required: true
+        },
+        'startTime': {
+            type: String,
+            required: true
+        },
+        'endTime': {
+            type: String,
+            required: true
+        },
+        'semester': {
+            type: String,
+            required: true
         }
     }
 );
 
 export default mongoose.model('Course', Course);
 
-//{"89-110","89-1111","89-112","89-113","89-1200","89-132","89-133","89-1195","89-1262"}
+//{"89-110","89-1111","89-112","89-1200","89-132","89-133","89-1195","89-1262"}
 //  { "courseNum": "XX 89-4", "courseName": "סמינריון", "dependencies": ["89-110","89-1111","89-112","89-113","89-1200","89-132","89-133","89-1195","89-1262", "89-362", "89-263"] },
