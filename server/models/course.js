@@ -9,13 +9,13 @@ const Course = new Schema ({
             type: String,
             required: true
         },
-        'dependencies': {
-            type: [{
-                'courseNum': {
-                    type: String,
-                    required: true
-                }
-            }]
+        dependencies: {
+            type: [String], // Change to array of strings
+            required: false
+        },
+        conflicts: {
+            type: [String], // Change to array of strings
+            required: false
         }
     }
 );
