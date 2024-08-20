@@ -9,8 +9,8 @@ import Preferences from './Preferences/Preferences.js'
 import users from './users/users.js';
 import { useState } from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
-import  {io}  from "socket.io-client";
-const socket = io('http://127.0.0.1:12345');
+// import  {io}  from "socket.io-client";
+// const socket = io('http://127.0.0.1:12345');
 function App() {
   const [token,setToken] = useState('');
   const [view,setView] = useState('welcome');
@@ -24,14 +24,14 @@ function App() {
     if (view !== 'chat') {
       return <Navigate to="/" replace={true} />;
     }
-    return <Chat username={username} setView={setView} token={token} socket={socket}/>;
+    return <Chat username={username} setView={setView} token={token} />;
   };
 
   let screen = null;
   return(
   <BrowserRouter>
     <Routes>
-      <Route path="/solution" element={<SolutionTable/>}></Route>
+      <Route path="/solution" element={<SolutionTable />}></Route>
       <Route path="/preferences" element={<Preferences />}></Route>
     <Route
           path="/register" element={<Register onWelcomeClick={() => handleViewChange('welcome')}
@@ -39,7 +39,7 @@ function App() {
       </Route>
       <Route path="/chat" element={<ChatRoute />} ></Route>
       <Route path="/login" element={<Welcome onRegisterClick={() => handleViewChange('register')}
-                                        onValidSubmit={() => handleViewChange('preferences')} setName={setUsername} setToken={setToken} socket={socket}/>}>
+                                        onValidSubmit={() => handleViewChange('preferences')} setName={setUsername} setToken={setToken} />}>
       </Route>
       <Route path="/" element={<Landing onRegisterClick={() => handleViewChange('register')}
                                                           onLoginClick={() => handleViewChange('login')} />} >

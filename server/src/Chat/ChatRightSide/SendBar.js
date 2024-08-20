@@ -27,7 +27,6 @@ function SendBar(props){
           return false;
         }
         const jas = {'chatId': props.currentChat, 'currentFriend': props.currentFriend, 'sender': props.username};
-        props.socket.emit('newMsg', jas);
 
 
         // useEffect(() => {

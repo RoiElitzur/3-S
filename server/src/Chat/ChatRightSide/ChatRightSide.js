@@ -86,7 +86,7 @@ if(!chat || !chat.messages){
         <RightHeader currentChat={chat.users[0]}/>
         <ul className="scrollable" id="scrollList" ref={props.scrollableRef}>
         </ul>
-        <SendBar username={props.username} currentChat={props.currentChat} newMessage={props.newMessage} setNewMessage={props.setNewMessage} token={props.token} socket={props.socket}/>
+        <SendBar username={props.username} currentChat={props.currentChat} newMessage={props.newMessage} setNewMessage={props.setNewMessage} token={props.token}/>
       </div>)
     }
 
@@ -108,7 +108,7 @@ if(!chat || !chat.messages){
         {body}
         </ul>
         <SendBar username={props.username} currentChat={props.currentChat} newMessage={props.newMessage}
-        setNewMessage={props.setNewMessage} token={props.token} socket={props.socket} currentFriend={props.currentFriend}/>
+        setNewMessage={props.setNewMessage} token={props.token} currentFriend={props.currentFriend}/>
       </div>);
 }
 export default ChatRightSide;
