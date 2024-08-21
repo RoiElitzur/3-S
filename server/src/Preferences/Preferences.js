@@ -1,8 +1,10 @@
 import './Preferences.css';
 import { useState, useEffect } from 'react';
 import Select from 'react-select';
+import {useNavigate} from 'react-router-dom';
 
 function Preferences() {
+    const navigate = useNavigate();
     const [courses, setCourses] = useState([]);
     const [selectedCourses, setSelectedCourses] = useState([]);
     const [numCoursesToGiveUpOptions, setNumCoursesToGiveUpOptions] = useState([]);
@@ -70,7 +72,7 @@ function Preferences() {
             giveUpOptions: numCoursesToGiveUpOptions,
             mustCourses: mustCoursesOptions,
         }
-        console.log(data);
+        //console.log(data);
         const res = await fetch('http://localhost:12345/Courses', {
             method: "POST",
             headers: {
@@ -81,7 +83,14 @@ function Preferences() {
         if(res.status !== 200) {
             return;
         }
-        //navigate('/Solutions');
+        const result = await res.text();
+        //console.log(result);
+
+        navigate('/solution', { state: { newData: result } });
+        // setSolution(result);
+        // navigate('/solution');
+
+
     };
 
     return (

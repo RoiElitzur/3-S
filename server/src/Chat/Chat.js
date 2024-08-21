@@ -18,20 +18,20 @@ function Chat(props){
     const [msgToRead,setMsgToRead] = useState(0);
 
 
-    useEffect(() => {
-      props.socket.on('check', function (msg){
-        console.log(msg);
-
-        if(msg.currentFriend === props.username) {
-          setNewMessage(1 - newMessage);
-          if(msg.chatId !== currentChat) {
-            let user = users.find(user =>user.username === msg.sender);
-            if (user) {
-              user.toRead = user.toRead + 1;
-              setMsgToRead(1 - msgToRead);
-          }
-        }
-      }}, [])});
+    // useEffect(() => {
+    //   props.socket.on('check', function (msg){
+    //     console.log(msg);
+    //
+    //     if(msg.currentFriend === props.username) {
+    //       setNewMessage(1 - newMessage);
+    //       if(msg.chatId !== currentChat) {
+    //         let user = users.find(user =>user.username === msg.sender);
+    //         if (user) {
+    //           user.toRead = user.toRead + 1;
+    //           setMsgToRead(1 - msgToRead);
+    //       }
+    //     }
+    //   }}, [])});
 
 
      function calculateScrollableAreaHeight() {
@@ -101,7 +101,7 @@ function Chat(props){
             newContact={newContact} newMessage={newMessage} currentFriend={currentFriend} setCurrentFriend={setCurrentFriend}
               msgToRead={msgToRead} setMsgToRead={setMsgToRead}/>
               <ChatRightSide username={props.username} currentChat={currentChat} setAreaSize={setAreaSize} setNewMessage={setNewMessage}
-                              newMessage={newMessage} scrollableRef={scrollableRef} token={props.token} socket={props.socket}
+                              newMessage={newMessage} scrollableRef={scrollableRef} token={props.token}
                               currentFriend={currentFriend} setMsgToRead={setMsgToRead}/>
               </div>
          </div>
