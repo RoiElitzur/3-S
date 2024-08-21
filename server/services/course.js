@@ -70,29 +70,58 @@ const createSolutions = async (input) => {
                 console.error(`stderr: ${data}`);
             });
 
+
             pythonProcess.on('close', (code) => {
                 console.log(`Python script exited with code ${code}`);
                 // Optionally, delete the temporary file after processing
                 fs.unlinkSync(tempFilePath);
 
-                const lines = output.split('\r\n');
-                lines.shift(); // Remove the first line
-                const filteredLines = lines.filter(line => line.trim() !== '');
+                // Process the output
+                console.log(output);
 
-                const filteredCourses = courses.filter(course => filteredLines.includes(course.courseNum));
+                // Split the output by lines
+                const lines = output.split('\n');
+
+                // Find the index where the actual data starts
+                const startIndex = lines.findIndex(line => line.includes('Installation plan with required dependencies:')) + 1;
+
+                // Slice the lines to get only the course numbers
+                const courseLines = lines.slice(startIndex).filter(line => line.trim() !== '');
+
+                // Extract course numbers from the lines
+                const courseNumbers = courseLines.map(line => line.trim());
+
+                // Filter the courses based on the course numbers
+                const filteredCourses = courses.filter(course => courseNumbers.includes(course.courseNum));
+
                 console.log(filteredCourses);
+
                 resolve(filteredCourses);
-
-
-
-                // const courseString = filteredLines.join(', ');
-
-                //console.log(courses);
-                //const allCourses = await Course.find({});
-
-
-                // resolve(courseString); // Resolve the promise with courseString
             });
+
+            // pythonProcess.on('close', (code) => {
+            //     console.log(`Python script exited with code ${code}`);
+            //     // Optionally, delete the temporary file after processing
+            //     fs.unlinkSync(tempFilePath);
+            //     console.log(output);
+            //     const lines = output.split('\r\n');
+            //     lines.shift(); // Remove the first line
+            //     const filteredLines = lines.filter(line => line.trim() !== '');
+            //
+            //     const filteredCourses = courses.filter(course => filteredLines.includes(course.courseNum));
+            //     console.log(filteredCourses);
+            //     resolve(filteredCourses);
+            //
+            //
+            //
+            //     // const courseString = filteredLines.join(', ');
+            //
+            //     //console.log(courses);
+            //     //const allCourses = await Course.find({});
+            //
+            //
+            //     // resolve(courseString); // Resolve the promise with courseString
+            // });
 
             pythonProcess.on('error', (error) => {
                 reject(error); // Reject the promise if there's an error
