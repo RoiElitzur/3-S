@@ -1,7 +1,15 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
 .schedule-container {
     background: linear-gradient(180deg, #4a148c, #1a1a1a);
     padding: 20px;
     text-align: center;
+    min-height: 100%;
 }
 
 .headline {
@@ -55,4 +63,45 @@
     .headline {
         font-size: 1.5em;
     }
+}
+
+
+
+
+
+.button-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px; /* Adds space between the buttons */
+}
+
+.back-button {
+    background-color: #7c63c5; /* A soft red color */
+    color: white; /* White text color */
+    padding: 5px 10px; /* Smaller padding for a smaller button */
+    border: none; /* Remove the default border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 0.9em; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text */
+    text-transform: uppercase; /* Uppercase text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+}
+
+.back-button:hover {
+    background-color: #7a5fc8; /* Darker red on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.back-button:active {
+    background-color: #6c4dc6; /* Even darker red on click */
+    transform: scale(0.95); /* Slightly shrink the button on click */
+}
+
+.back-button:focus {
+    outline: none; /* Remove focus outline */
+    box-shadow: 0 0 10px rgba(255, 111, 97, 0.5); /* Add a glowing effect on focus */
 }
