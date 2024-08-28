@@ -1,8 +1,4 @@
-import Welcome_Login_Register from "./Welcome_Login_Register.js";
-import Welcome_Password from "./Welcome_Password.js";
-import Welcome_User_Name from "./Welcome_User_Name.js";
 import { useRef, useState, useEffect } from "react";
-import users from '../users/users.js';
 import './welcome.css';
 import { Link , useNavigate} from 'react-router-dom';
 function Welcome(props){
@@ -81,22 +77,12 @@ function Welcome(props){
         }
     }
 
-    // useEffect(() => {
-    //     props.socket.on('connect', function (msg){
-
-    //         props.socket.on("welcome", console.log);
-
-    //         console.log("aaa");
-    //         props.socket.emit('i am client','aaa1');
-    //     }, [])});
-
 
     const handleSignUpClick = (event) =>{
         event.preventDefault(); // prevent form submission
         props.onRegisterClick();
         navigate('/register');
     }
-
     return (
         <div className="login">
             <div className="navbar">

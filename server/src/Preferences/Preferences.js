@@ -16,7 +16,6 @@ function Preferences() {
     const [daysOrCourses,setDaysOrCourses] = useState();
 
     const handleLogout = () => {
-        // Add your logout logic here
         navigate('/'); // Redirect to landing page after logout
     };
 
@@ -83,41 +82,6 @@ function Preferences() {
     const handleChangeDaysOrCourses = (selectedOptions) =>{
         setDaysOrCourses(selectedOptions);
     }
-
-    // const handleSubmit = async (event) => {
-    //     event.preventDefault();
-    //
-    //     const data = {
-    //         selectedCourses: selectedCourses,
-    //         numDays: selectedNumDays,
-    //         daysOrCourses : daysOrCourses,
-    //         giveUpOptions: numCoursesToGiveUpOptions,
-    //         mustCourses: selectedMustCourses,
-    //     }
-    //     //console.log(data);
-    //     const res = await fetch('http://localhost:12345/Courses', {
-    //         method: "POST",
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         'body': JSON.stringify(data),
-    //     });
-    //     if(res.status !== 200) {
-    //         return;
-    //     }
-    //     const solution = await res.text();
-    //     //console.log(result);
-    //
-    //
-    //
-    //
-    //
-    //     navigate('/solution', { state: { newData: solutio } });
-    //     // setSolution(result);
-    //     // navigate('/solution');
-    //
-    //
-    // };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -212,7 +176,7 @@ function Preferences() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="NumDays">How many days in schedule</label>
+                    <label htmlFor="NumDays">Number of days in the schedule</label>
                     <Select
                         id="NumDays"
                         name="NumDays"
@@ -231,7 +195,7 @@ function Preferences() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="less-days-more-courses">More courses or less days</label>
+                    <label htmlFor="less-days-more-courses">More courses or fewer days</label>
                     <Select
                         id="less-days-more-courses"
                         name="less-days-more-courses"
@@ -246,7 +210,7 @@ function Preferences() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="courses-to-give-up">How many courses you are willing to give up if at all</label>
+                    <label htmlFor="courses-to-give-up">How many courses are you willing to give up, if any</label>
                     <Select
                         id="courses-to-give-up"
                         name="courses-to-give-up"
@@ -256,7 +220,7 @@ function Preferences() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="courses-must-be-in-schedule">Courses that must be in schedule</label>
+                    <label htmlFor="courses-must-be-in-schedule">Courses that must be included in the schedule</label>
                     <Select
                         id="courses-must-be-in-schedule"
                         name="courses-must-be-in-schedule"
@@ -268,10 +232,6 @@ function Preferences() {
                         placeholder="Choose courses"
                     />
                 </div>
-                {/*<div className="form-group">*/}
-                {/*    <label htmlFor="non-related-anchors">Non related anchors in schedule</label>*/}
-                {/*    <input type="text" id="non-related-anchors" className="input-field" placeholder="Day, HH:MM, Duration in minutes, Task Name" />*/}
-                {/*</div>*/}
                 <button type="submit" className="submit-button">Submit Preferences</button>
             </form>
         </div>

@@ -1,12 +1,10 @@
 import Welcome from './Welcome/Welcome.js';
 import Register from './Register/Register.js';
-import Chat from './Chat/Chat.js';
 import SolutionTable from "./SolutionTable/SolutionTable.js";
 import './SolutionTable/SolutionTable.css'
 import './App.css';
 import Landing from './Landing/Landing.js'
 import Preferences from './Preferences/Preferences.js'
-import users from './users/users.js';
 import { useState } from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 function App() {
