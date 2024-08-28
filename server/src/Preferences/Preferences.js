@@ -68,7 +68,6 @@ function Preferences() {
     };
 
     const handleSelectSemesterChange = (selectedOptions) => {
-        console.log(selectedOptions);
         setSelectedSemester(selectedOptions);
         setCoursesBySemester(courses.filter(course => course.semester === selectedOptions.value));
         setSelectedMustCourses([]);
@@ -85,6 +84,41 @@ function Preferences() {
         setDaysOrCourses(selectedOptions);
     }
 
+    // const handleSubmit = async (event) => {
+    //     event.preventDefault();
+    //
+    //     const data = {
+    //         selectedCourses: selectedCourses,
+    //         numDays: selectedNumDays,
+    //         daysOrCourses : daysOrCourses,
+    //         giveUpOptions: numCoursesToGiveUpOptions,
+    //         mustCourses: selectedMustCourses,
+    //     }
+    //     //console.log(data);
+    //     const res = await fetch('http://localhost:12345/Courses', {
+    //         method: "POST",
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         'body': JSON.stringify(data),
+    //     });
+    //     if(res.status !== 200) {
+    //         return;
+    //     }
+    //     const solution = await res.text();
+    //     //console.log(result);
+    //
+    //
+    //
+    //
+    //
+    //     navigate('/solution', { state: { newData: solutio } });
+    //     // setSolution(result);
+    //     // navigate('/solution');
+    //
+    //
+    // };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -94,26 +128,50 @@ function Preferences() {
             daysOrCourses : daysOrCourses,
             giveUpOptions: numCoursesToGiveUpOptions,
             mustCourses: selectedMustCourses,
+        };
+
+        try {
+            // First HTTP request
+            const res = await fetch('http://localhost:12345/Courses', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (res.status !== 200) {
+                // Handle error
+                return;
+            }
+
+            const solution = await res.text();
+
+            // Second HTTP request
+            const additionalRes = await fetch('http://localhost:12345/Courses/dependencies', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+
+                },
+                body: JSON.stringify( data ),
+            });
+
+            if (additionalRes.status !== 200) {
+                // Handle error
+                return;
+            }
+
+            const dependencies = await additionalRes.text();
+
+            console.log(dependencies);
+
+            // Navigate to the new page with both results
+            navigate('/solution', { state: { 'solution':solution, 'dependencies': dependencies } });
+
+        } catch (error) {
+            console.error("Error during HTTP requests:", error);
         }
-        //console.log(data);
-        const res = await fetch('http://localhost:12345/Courses', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            'body': JSON.stringify(data),
-        });
-        if(res.status !== 200) {
-            return;
-        }
-        const result = await res.text();
-        //console.log(result);
-
-        navigate('/solution', { state: { newData: result } });
-        // setSolution(result);
-        // navigate('/solution');
-
-
     };
 
     return (

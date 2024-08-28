@@ -15,4 +15,14 @@ const createSolutions = async(req,res) => {
     }
 }
 
-export default {getCourses,createSolutions}
+const getDependencies = async(req,res) => {
+    try {
+        const dependencies = await courseService.getDependencies(req.body);
+        res.status(200).json(dependencies); // Send the JSON response to the client
+    } catch (error) {
+        console.error('Error in controller:', error);
+        res.status(500).json({ error: 'An error occurred while processing the request.' });
+    }
+}
+
+export default {getCourses,createSolutions, getDependencies}
