@@ -1,5 +1,4 @@
 import Chat from '../models/chat.js'
-import Massage from '../models/massage.js'
 import userService from '../services/user.js'
 
 
@@ -47,25 +46,6 @@ const deleteChat = async(id)=>{
     await chat.deleteOne();
     return true;
 }
-
-// 'sender': {
-//     type:{'username': {
-//         type: String,
-//         required: true
-//     }, 
-//     'displayName': {
-//         type: String,
-//         required: true
-//     },
-//     'profilePic': {
-//         type: String,
-//         required: false
-//     }}
-// },
-// 'content':{
-//     type: String,
-//     default: ""
-// }
 
 
 const createMessage = async(sender,content) => {
