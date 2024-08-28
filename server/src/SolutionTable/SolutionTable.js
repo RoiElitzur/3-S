@@ -18,7 +18,7 @@ function SolutionTable() {
         '08:00 – 09:00', '09:00 – 10:00', '10:00 – 11:00',
         '11:00 – 12:00', '12:00 – 13:00', '13:00 – 14:00',
         '14:00 – 15:00', '15:00 – 16:00', '16:00 – 17:00',
-        '17:00 – 18:00', '18:00 – 19:00'
+        '17:00 – 18:00', '18:00 – 19:00', '19:00 – 20:00','20:00 - 20:00'
     ];
 
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -51,7 +51,6 @@ function SolutionTable() {
         return <div>Error: Invalid data format</div>;
     }
 
-    // Ensure dependencies is an array and map over it to get course names
     const parsedDependencies = JSON.parse(dependencies);
     const dependencyList = Array.isArray(parsedDependencies) ? parsedDependencies.map(dep => dep.courseName) : [];
 
@@ -100,5 +99,3 @@ function SolutionTable() {
 }
 
 export default SolutionTable;
-
-

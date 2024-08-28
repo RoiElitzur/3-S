@@ -128,7 +128,7 @@ function Preferences() {
 
             const dependencies = await additionalRes.text();
 
-            console.log(dependencies);
+            // console.log(dependencies);
 
             // Navigate to the new page with both results
             navigate('/solution', { state: { 'solution':solution, 'dependencies': dependencies } });
