@@ -1,10 +1,11 @@
 import './Preferences.css';
 import { useState, useEffect } from 'react';
 import Select from 'react-select';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Preferences() {
     const navigate = useNavigate();
+    const [selectedYear, setSelectedYear] = useState(null);
     const [selectedSemester, setSelectedSemester] = useState(null);
     const [courses, setCourses] = useState([]);
     const [coursesBySemester, setCoursesBySemester] = useState([]);
@@ -12,13 +13,12 @@ function Preferences() {
     const [numCoursesToGiveUpOptions, setNumCoursesToGiveUpOptions] = useState([]);
     const [mustCoursesOptions, setMustCoursesOptions] = useState([]);
     const [selectedMustCourses, setSelectedMustCourses] = useState([]);
-    const [selectedNumDays,setSelectedNumDays] = useState();
-    const [daysOrCourses,setDaysOrCourses] = useState();
+    const [selectedNumDays, setSelectedNumDays] = useState();
+    const [daysOrCourses, setDaysOrCourses] = useState();
 
     const handleLogout = () => {
         navigate('/'); // Redirect to landing page after logout
     };
-
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -31,13 +31,23 @@ function Preferences() {
 
             if (res.status === 200) {
                 const data = await res.json();
-                const courseOptions = data.map(course => ({
-                    value: course.courseNum,
-                    label: course.courseName,
-                    id: course._id,
-                    semester: course.semester
-                }));
+                const uniqueCourses = new Map();
+                data.forEach(course => {
+                    if (!uniqueCourses.has(course.courseNum)) {
+                        uniqueCourses.set(course.courseNum, {
+                            value: course.courseNum,
+                            label: course.courseName,
+                            id: course._id,
+                            year: course.year,
+                            semester: course.semester,
+                            dependencies: course.dependencies
+                        });
+                    }
+                });
+                const courseOptions = Array.from(uniqueCourses.values());
                 setCourses(courseOptions);
+                // Initialize courseBySemester with all courses
+                setCoursesBySemester(courseOptions);
             } else {
                 console.error('Error fetching courses');
             }
@@ -56,14 +66,46 @@ function Preferences() {
         const mustCourses = selectedCourses.map(course => ({
             value: course.value,
             label: course.label,
-            id: course._id
+            id: course.id
         }));
         setMustCoursesOptions(mustCourses);
     }, [selectedCourses]);
 
+    useEffect(() => {
+        const filterCourses = () => {
+            let filtered = courses.filter(course => {
+                if (selectedYear && selectedSemester) {
+                    return (course.year === selectedYear || course.year === "0") &&
+                        course.semester === selectedSemester.value;
+                } else if (selectedYear) {
+                    return (course.year === selectedYear || course.year === "0");
+                } else if (selectedSemester) {
+                    return course.semester === selectedSemester.value;
+                } else {
+                    return true;
+                }
+            });
+
+            // Ensure no duplicate courses
+            const uniqueFilteredCourses = new Map();
+            filtered.forEach(course => {
+                if (!uniqueFilteredCourses.has(course.value)) {
+                    uniqueFilteredCourses.set(course.value, course);
+                }
+            });
+
+            setCoursesBySemester(Array.from(uniqueFilteredCourses.values()));
+        };
+
+        filterCourses();
+    }, [courses, selectedYear, selectedSemester]);
 
     const handleChangeMustCourses = (selectedOptions) => {
         setSelectedMustCourses(selectedOptions);
+    };
+
+    const handleSelectYearChange = (selectedOptions) => {
+        setSelectedYear(selectedOptions ? selectedOptions.value : null);
     };
 
     const handleSelectSemesterChange = (selectedOptions) => {
@@ -76,26 +118,30 @@ function Preferences() {
     const handleSelectChange = (selectedOptions) => {
         setSelectedCourses(selectedOptions);
     };
-    const handleSelectChangeNumDays = (selectedOptions) =>{
+
+    const handleSelectChangeNumDays = (selectedOptions) => {
         setSelectedNumDays(selectedOptions);
-    }
-    const handleChangeDaysOrCourses = (selectedOptions) =>{
+    };
+
+    const handleChangeDaysOrCourses = (selectedOptions) => {
         setDaysOrCourses(selectedOptions);
-    }
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        // Create the data object with selected year and semester
         const data = {
+            selectedYear: selectedYear,
+            selectedSemester: selectedSemester ? selectedSemester.value : null,
             selectedCourses: selectedCourses,
             numDays: selectedNumDays,
-            daysOrCourses : daysOrCourses,
+            daysOrCourses: daysOrCourses,
             giveUpOptions: numCoursesToGiveUpOptions,
             mustCourses: selectedMustCourses,
         };
 
         try {
-            // First HTTP request
             const res = await fetch('http://localhost:12345/Courses', {
                 method: "POST",
                 headers: {
@@ -106,6 +152,7 @@ function Preferences() {
 
             if (res.status !== 200) {
                 // Handle error
+                console.error('Error submitting courses data');
                 return;
             }
 
@@ -116,22 +163,19 @@ function Preferences() {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
-
                 },
-                body: JSON.stringify( data ),
+                body: JSON.stringify(data),
             });
 
             if (additionalRes.status !== 200) {
                 // Handle error
+                console.error('Error submitting dependencies data');
                 return;
             }
 
             const dependencies = await additionalRes.text();
-
-            // console.log(dependencies);
-
             // Navigate to the new page with both results
-            navigate('/solution', { state: { 'solution':solution, 'dependencies': dependencies } });
+            navigate('/solutions', { state: { 'solutions': solution, 'dependencies': dependencies } });
 
         } catch (error) {
             console.error("Error during HTTP requests:", error);
@@ -146,14 +190,31 @@ function Preferences() {
             </div>
             <form className="preferences-form" onSubmit={handleSubmit}>
                 <div className="form-group">
+                    <label htmlFor="chosen-year">Choose year</label>
+                    <Select
+                        id="chosen-year"
+                        name="chosen-year"
+                        className="input-field"
+                        options={[
+                            { value: '1', label: 'Year 1' },
+                            { value: '2', label: 'Year 2' },
+                            { value: '3', label: 'Year 3' }
+                        ]}
+                        value={selectedYear ? { value: selectedYear, label: `Year ${selectedYear}` } : null}
+                        onChange={handleSelectYearChange}
+                        closeMenuOnSelect={true}
+                        placeholder="Choose year"
+                    />
+                </div>
+                <div className="form-group">
                     <label htmlFor="chosen-semester">Choose semester</label>
                     <Select
                         id="chosen-semester"
                         name="chosen-semester"
                         className="input-field"
                         options={[
-                            {value: 'a', label: 'Semester A'},
-                            {value: 'b', label: 'Semester B'}
+                            { value: 'a', label: 'Semester A' },
+                            { value: 'b', label: 'Semester B' }
                         ]}
                         value={selectedSemester}
                         onChange={handleSelectSemesterChange}
@@ -182,12 +243,12 @@ function Preferences() {
                         name="NumDays"
                         className="input-field"
                         options={[
-                            {value: '1', label: '1'},
-                            {value: '2', label: '2'},
-                            {value: '3', label: '3'},
-                            {value: '4', label: '4'},
-                            {value: '5', label: '5'},
-                            {value: '6', label: '6'}
+                            { value: '1', label: '1' },
+                            { value: '2', label: '2' },
+                            { value: '3', label: '3' },
+                            { value: '4', label: '4' },
+                            { value: '5', label: '5' },
+                            { value: '6', label: '6' }
                         ]}
                         value={selectedNumDays}
                         onChange={handleSelectChangeNumDays}
@@ -201,8 +262,8 @@ function Preferences() {
                         name="less-days-more-courses"
                         className="input-field"
                         options={[
-                            {value: '0', label: 'More courses'},
-                            {value: '1', label: 'Less days'}
+                            { value: '0', label: 'More courses' },
+                            { value: '1', label: 'Less days' }
                         ]}
                         value={daysOrCourses}
                         onChange={handleChangeDaysOrCourses}

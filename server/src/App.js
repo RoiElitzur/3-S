@@ -1,6 +1,7 @@
 import Welcome from './Welcome/Welcome.js';
 import Register from './Register/Register.js';
 import SolutionTable from "./SolutionTable/SolutionTable.js";
+import Solutions from "./Solutions/Solutions.js";
 import './SolutionTable/SolutionTable.css'
 import './App.css';
 import Landing from './Landing/Landing.js'
@@ -20,6 +21,7 @@ function App() {
   <BrowserRouter>
     <Routes>
       <Route path="/solution" element={<SolutionTable />}></Route>
+      <Route path="/solutions" element={<Solutions />}></Route>
       <Route path="/preferences" element={<Preferences />}></Route>
     <Route
           path="/register" element={<Register onWelcomeClick={() => handleViewChange('welcome')}

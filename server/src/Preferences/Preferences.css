@@ -1,31 +1,55 @@
+/* Ensure that the body and html take full height and use flexbox for centering */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background: linear-gradient(180deg, #4a148c, #1a1a1a); /* Match background gradient */
+}
+
+/* Main container styling */
 .preferences-container {
     background: linear-gradient(180deg, #4a148c, #1a1a1a);
-    padding: 40px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     text-align: center;
+    max-width: 100%;
+    width: 90vw; /* Adjust width to fit different screen sizes */
+    box-sizing: border-box; /* Include padding in width calculation */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
 }
 
+/* Header styling */
 .headline {
     font-size: 2em;
     margin-bottom: 20px;
     font-weight: bold;
+    color: white;
 }
 
+/* Form container styling */
 .preferences-form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    max-width: 600px; /* Limit form width */
 }
 
+/* Form group styling */
 .form-group {
     width: 100%;
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Center form elements horizontally */
 }
 
+/* Label styling */
 label {
     display: block;
     font-size: 1em;
@@ -33,22 +57,17 @@ label {
     color: white;
 }
 
-.input-field {
+/* Input and select field styling */
+.input-field, .select-field {
     width: 100%;
+    max-width: 400px; /* Limit the width of input fields */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1em;
 }
 
-.select-field {
-    width: 100%;
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
+/* Submit button styling */
 .submit-button {
     background-color: #4a148c;
     color: white;
@@ -65,9 +84,10 @@ label {
     background-color: #6a1b9a;
 }
 
+/* Responsive adjustments */
 @media screen and (max-width: 768px) {
     .preferences-container {
-        padding: 20px;
+        padding: 15px;
     }
 
     .input-field, .submit-button {
@@ -76,6 +96,10 @@ label {
 }
 
 @media screen and (max-width: 480px) {
+    .preferences-container {
+        padding: 10px;
+    }
+
     .headline {
         font-size: 1.5em;
     }
@@ -85,39 +109,41 @@ label {
     }
 }
 
+/* Button container styling */
 .button-container {
     position: absolute;
     top: 20px;
-    right: 40px;
+    right: 20px;
     display: flex;
-    gap: 10px; /* Adds space between the buttons */
+    gap: 10px;
 }
 
+/* Back button styling */
 .back-button {
-    background-color: #7c63c5; /* A soft red color */
-    color: white; /* White text color */
-    padding: 5px 10px; /* Smaller padding for a smaller button */
-    border: none; /* Remove the default border */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 0.9em; /* Slightly smaller font size */
-    font-weight: bold; /* Bold text */
-    text-transform: uppercase; /* Uppercase text */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+    background-color: #7c63c5;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .back-button:hover {
-    background-color: #7a5fc8; /* Darker red on hover */
-    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    background-color: #7a5fc8;
+    transform: scale(1.05);
 }
 
 .back-button:active {
-    background-color: #6c4dc6; /* Even darker red on click */
-    transform: scale(0.95); /* Slightly shrink the button on click */
+    background-color: #6c4dc6;
+    transform: scale(0.95);
 }
 
 .back-button:focus {
-    outline: none; /* Remove focus outline */
-    box-shadow: 0 0 10px rgba(255, 111, 97, 0.5); /* Add a glowing effect on focus */
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
 }

@@ -1,59 +1,206 @@
 [
-  { "courseNum": "89-110", "courseName": "מבוא למדעי המחשב", "dependencies": [], "day": "Tuesday", "startTime": "15:00", "endTime": "18:00", "semester": "a", "conflicts": ["89-2197", "89-220"] },
-  { "courseNum": "89-1111", "courseName": "תכנות מונחה עצמים", "dependencies": ["89-110"], "day": "Monday", "startTime": "15:00", "endTime": "18:00", "semester": "b", "conflicts": ["89-231", "89-511", "89-550"] },
-  { "courseNum": "89-112", "courseName": "מבוא לאלגברה לינארית", "dependencies": ["89-1195"], "day": "Monday", "startTime": "09:00", "endTime": "12:00", "semester": "a", "conflicts": [] },
-  { "courseNum": "89-1200", "courseName": "מבני נתונים", "dependencies": ["89-110", "89-112"], "day": "Tuesday", "startTime": "15:00", "endTime": "18:00", "semester": "b", "conflicts": ["89-231"] },
-  { "courseNum": "89-132", "courseName": "חשבון אינפיניטסימלי 1", "dependencies": ["89-1195"], "day": "Wednesday", "startTime": "12:00", "endTime": "14:00", "semester": "a", "conflicts": ["89-560"] },
-  { "courseNum": "89-133", "courseName": "חשבון אינפיניטסימלי 2", "dependencies": ["89-132"], "day": "Sunday", "startTime": "13:00", "endTime": "15:00", "semester": "b", "conflicts": ["89-263"] },
-  { "courseNum": "89-1195", "courseName": "מתמטיקה בדידה", "dependencies": [], "day": "Wednesday", "startTime": "10:00", "endTime": "12:00", "semester": "a", "conflicts": ["89-685", "89-581"] },
-  { "courseNum": "89-1262", "courseName": "הסתברות כללית", "dependencies": ["89-112", "89-132", "89-1195"], "day": "Monday", "startTime": "09:00", "endTime": "12:00", "semester": "b", "conflicts": [] },
-  { "courseNum": "89-210", "courseName": "תכנות מערכות מתקדם", "dependencies": ["89-110", "89-1111", "89-111", "89-1200", "89-1195"], "day": "Sunday", "startTime": "12:00", "endTime": "15:00", "semester": "a", "conflicts": ["89-5311"] },
-  { "courseNum": "89-213", "courseName": "מודלים חישוביים", "dependencies": ["89-110", "89-1195"], "day": "Tuesday", "startTime": "19:00", "endTime": "21:00", "semester": "a", "conflicts": [] },
-  { "courseNum": "89-2197", "courseName": "מבנים בדידים", "dependencies": ["89-112", "89-1262", "89-1200", "89-132", "89-1195"], "day": "Tuesday", "startTime": "16:00", "endTime": "19:00", "semester": "a", "conflicts": ["89-110"] },
-  { "courseNum": "89-220", "courseName": "אלגוריתמים 1", "dependencies": ["89-110", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262"], "day": "Tuesday", "startTime": "13:00", "endTime": "16:00", "semester": "a", "conflicts": ["89-110"] },
-  { "courseNum": "89-226", "courseName": "חישוביות וסיבוכיות", "dependencies": ["89-110", "89-112", "89-1200", "89-213", "89-132", "89-133", "89-1195", "89-1262", "89-220"], "day": "Monday", "startTime": "12:00", "endTime": "15:00", "semester": "a", "conflicts": ["89-679"] },
-  { "courseNum": "89-230", "courseName": "מבנה מחשב", "dependencies": ["89-110", "89-1111", "89-111", "89-1200", "89-132", "89-1195"], "day": "Monday", "startTime": "15:00", "endTime": "18:00", "semester": "a", "conflicts": ["89-542"] },
-  { "courseNum": "89-231", "courseName": "מערכות הפעלה", "dependencies": ["89-110", "89-1111", "89-111", "89-1200", "89-1195"], "day": "Tuesday", "startTime": "16:00", "endTime": "19:00", "semester": "b", "conflicts": ["89-1200"] },
-  { "courseNum": "89-263", "courseName": "שיטות סטטיסטיות במדעי המחשב", "dependencies": ["89-112", "89-132", "89-133", "89-1195", "89-1262"], "day": "Sunday", "startTime": "13:00", "endTime": "15:00", "semester": "a", "conflicts": ["89-133"] },
-  { "courseNum": "89-5311", "courseName": "שפות תכנות", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262", "89-210", "89-220", "89-230"], "day": "Sunday", "startTime": "11:00", "endTime": "14:00", "semester": "a", "conflicts": ["89-210"] },
-  { "courseNum": "89-3222", "courseName": "אלגוריתמים מתקדמים", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262", "89-220", "89-226"], "day": "Wednesday", "startTime": "09:00", "endTime": "12:00", "semester": "b", "conflicts": [] },
-  { "courseNum": "89-385", "courseName": "סדנא לפרויקטים", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-210", "89-230", "89-231"], "conflicts": [] },
-  { "courseNum": "89-509", "courseName": "תכנות בטוח ואבטחת תקשוב", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-210", "89-220", "89-230", "89-1262"], "day": "Sunday", "startTime": "11:00", "endTime": "14:00", "semester": "b", "conflicts": [] },
-  { "courseNum": "89-511", "courseName": "למידת מכונה", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262", "89-220"], "day": "Monday", "startTime": "16:00", "endTime": "19:00", "semester": "b", "conflicts": ["89-1111", "89-550"] },
-  { "courseNum": "89-200", "courseName": "לוגיקה מתמטית", "dependencies": ["89-1195"], "day": "Tuesday", "startTime": "10:00", "endTime": "12:00", "semester": "a", "conflicts": ["89-547"] },
-  { "courseNum": "89-214", "courseName": "מבנים אלגבריים", "dependencies": ["89-112"], "day": "Sunday", "startTime": "14:00", "endTime": "16:00", "semester": "b", "conflicts": [] },
-  { "courseNum": "89-256", "courseName": "תורת המספרים", "dependencies": ["89-1195"], "day": "Wednesday", "startTime": "12:00", "endTime": "15:00", "semester": "b", "conflicts": ["89-560"] },
-  { "courseNum": "89-518", "courseName": "גיאומטריה חישובית", "dependencies": ["89-110", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-220"], "day": "Wednesday", "startTime": "14:00", "endTime": "16:00", "semester": "a", "conflicts": [] },
-  { "courseNum": "89-5350", "courseName": "מבוא לרשתות תקשורת", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262", "89-220", "89-1262"], "day": "Monday", "startTime": "16:00", "endTime": "18:00", "semester": "b", "conflicts": ["89-511"] },
-  { "courseNum": "89-546", "courseName": "הסקה אוטומטית ושימושיה", "dependencies": ["89-226", "89-110"], "day": "Sunday", "startTime": "17:00", "endTime": "19:00", "semester": "a", "conflicts": [] },
-  { "courseNum": "89-547", "courseName": "מדעי נתונים טבלאיים", "dependencies": ["89-511"], "day": "Tuesday", "startTime": "10:00", "endTime": "12:00", "semester": "a", "conflicts": ["89-200"] },
-  { "courseNum": "89-550", "courseName": "אבטחת תקשורת", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262", "89-210", "89-220", "89-230", "89-509"], "day": "Monday", "startTime": "16:00", "endTime": "18:00", "semester": "b", "conflicts": ["89-511"] },
-  { "courseNum": "89-560", "courseName": "עיבוד תמונות", "dependencies": ["89-110", "89-1111", "89-111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-220", "89-1262"], "day": "Wednesday", "startTime": "12:00", "endTime": "14:00", "semester": "a", "conflicts": ["89-132", "89-256"] },
-  { "courseNum": "89-570", "courseName": "בינה מלאכותית", "dependencies": ["89-110", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-220", "89-1262"], "day": "Thursday", "startTime": "11:00", "endTime": "14:00", "semester": "a", "conflicts": [] },
-  { "courseNum": "89-575", "courseName": "שיטות אימות לתוכנה", "dependencies": ["89-1195", "89-200"], "day": "Wednesday", "startTime": "16:00", "endTime": "18:00", "semester": "a", "conflicts": [] },
-  { "courseNum": "89-581", "courseName": "מערכות מסדי נתונים", "dependencies": ["89-110", "89-1195"], "day": "Wednesday", "startTime": "10:00", "endTime": "13:00", "semester": "a", "conflicts": ["89-1195"] },
-  { "courseNum": "89-594", "courseName": "יצוגים פורמליים לשפות טבעיות", "dependencies": ["89-213", "89-1195"], "day": "Thursday", "startTime": "14:00", "endTime": "16:00", "semester": "b", "conflicts": ["89-617", "89-669"] },
-  { "courseNum": "89-617", "courseName": "מבוא לתורת המשחקים", "dependencies": ["89-112", "89-132", "89-133", "89-1195", "89-1262", "89-263"], "day": "Thursday", "startTime": "14:00", "endTime": "16:00", "semester": "b", "conflicts": ["89-594", "89-669"] },
-  { "courseNum": "89-641", "courseName": "נושאים בתורת המידע", "dependencies": ["89-133", "89-220"], "day": "Tuesday", "startTime": "10:00", "endTime": "12:00", "semester": "b", "conflicts": ["89-715", "89-6871"] },
-  { "courseNum": "89-656", "courseName": "מבוא לקריפטוגרפיה", "dependencies": ["89-110", "89-112", "89-1200", "89-213", "89-132", "89-133", "89-1195", "89-220", "89-226", "89-1262"], "day": "Sunday", "startTime": "09:00", "endTime": "12:00", "semester": "a", "conflicts": [] },
-  { "courseNum": "89-680", "courseName": "עיבוד שפות טבעיות", "dependencies": ["89-220", "89-1262", "89-511"], "day": "Tuesday", "startTime": "15:00", "endTime": "18:00", "semester": "a", "conflicts": [] },
-  { "courseNum": "89-685", "courseName": "מבוא לרובוטיקה", "dependencies": ["89-110", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-220", "89-1262"], "day": "Wednesday", "startTime": "10:00", "endTime": "12:00", "semester": "a", "conflicts": ["89-1195", "89-688"] },
-  { "courseNum": "89-6871", "courseName": "שיטות דיפ לרנינג לטקסטים ורצפים", "dependencies": ["89-220", "89-1262", "89-511"], "day": "Tuesday", "startTime": "10:00", "endTime": "12:00", "semester": "a", "conflicts": ["89-715", "89-641"] },
-  { "courseNum": "89-715", "courseName": "אלגוריתמים מבוזרים", "dependencies": ["89-220", "89-210"], "day": "Tuesday", "startTime": "10:00", "endTime": "12:00", "semester": "b", "conflicts": ["89-641", "89-6871"] },
-  { "courseNum": "89-3592", "courseName": "יסודות בממשק משתמש", "dependencies": ["89-110", "89-1111", "89-111", "89-210"], "day": "Wednesday", "startTime": "09:00", "endTime": "11:00", "semester": "a", "conflicts": [] },
-  { "courseNum": "89-512", "courseName": "ביולוגיה חישובית", "dependencies": ["89-110"], "day": "Thursday", "startTime": "12:00", "endTime": "14:00", "semester": "b", "conflicts": [] },
-  { "courseNum": "89-528", "courseName": "אלגוריתמים בינוארוניים חכמים", "dependencies": ["89-110", "89-112", "89-1200", "89-1195", "89-220", "89-132", "89-1262"], "day": "Thursday", "startTime": "18:00", "endTime": "20:00", "semester": "b", "conflicts": [] },
-  { "courseNum": "89-542", "courseName": "ניהול נתוני עתק ברשת", "dependencies": ["89-110", "89-1111", "89-111", "89-112", "89-1200", "89-213", "89-1195", "89-581"], "day": "Monday", "startTime": "14:00", "endTime": "16:00", "semester": "a", "conflicts": ["89-230"] },
-  { "courseNum": "89-5441", "courseName": "מבוא לממשקי אדם-רובוט", "dependencies": ["89-210"], "day": "Thursday", "startTime": "14:00", "endTime": "16:00", "semester": "b", "conflicts": [] },
-  { "courseNum": "89-553", "courseName": "קריפטואנליזה", "dependencies": ["89-110", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-220", "89-1262"], "day": "Sunday", "startTime": "17:00", "endTime": "20:00", "semester": "b", "conflicts": [] },
-  { "courseNum": "89-561", "courseName": "ראיה ממוחשבת", "dependencies": ["89-110", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-220", "89-1262"], "day": "Wednesday", "startTime": "14:00", "endTime": "16:00", "semester": "b", "conflicts": [] },
-  { "courseNum": "89-5993", "courseName": "קורס מחקר מתקדם באלגוריתמיקה 1", "dependencies": [], "day": "Sunday", "startTime": "16:00", "endTime": "18:00", "semester": "a", "conflicts": [] },
-  { "courseNum": "89-6561", "courseName": "מערכות הוכחה קריפטוגרפיות", "dependencies": ["89-226", "89-263"], "day": "Monday", "startTime": "10:00", "endTime": "12:00", "semester": "a", "conflicts": [] },
-  { "courseNum": "89-657", "courseName": "חישוב בטוח", "dependencies": ["89-110", "89-1111", "89-111", "89-112", "89-1200", "89-213", "89-132", "89-133", "89-1195", "89-220", "89-226", "89-1262", "89-656"], "day": "Sunday", "startTime": "10:00", "endTime": "12:00", "semester": "b", "conflicts": [] },
-  { "courseNum": "89-684", "courseName": "חישוב קוונטי", "dependencies": ["89-112"], "day": "Thursday", "startTime": "10:00", "endTime": "12:00", "semester": "a", "conflicts": [] },
-  { "courseNum": "89-669", "courseName": "סדנה ברובוטיקה", "dependencies": [], "day": "Thursday", "startTime": "14:00", "endTime": "16:00", "semester": "b", "conflicts": ["89-594", "89-617"] },
-  { "courseNum": "89-679", "courseName": "סדנה במסדי נתונים", "dependencies": ["89-110", "89-111", "89-1111", "89-112", "89-1200", "89-213", "89-1195", "89-581"], "day": "Monday", "startTime": "12:00", "endTime": "14:00", "semester": "a", "conflicts": ["89-226"] },
-  { "courseNum": "89-683", "courseName": "מודלים קוגניטיביים", "dependencies": ["89-1262", "89-511"], "day": "Sunday", "startTime": "11:00", "endTime": "13:00", "semester": "b", "conflicts": [] },
-  { "courseNum": "89-688", "courseName": "תרגום מכונות סטטיסטי", "dependencies": ["89-1262", "89-511"], "day": "Wednesday", "startTime": "10:00", "endTime": "12:00", "semester": "b", "conflicts": ["89-685"] },
-  { "courseNum": "89-698", "courseName": "תכנון מכניזמים", "dependencies": ["89-220", "89-3222"], "day": "Sunday", "startTime": "09:00", "endTime": "11:00", "semester": "b", "conflicts": [] }
+
+    { "courseNum": "89-110", "courseName": "מבוא למדעי המחשב", "dependencies": [], "day": "Tuesday", "startTime": "15:00", "endTime": "18:00", "semester": "a", "conflicts": ["89-2197", "89-220"], "index": "0", "year": "1" },
+    { "courseNum": "89-110", "courseName": "מבוא למדעי המחשב", "dependencies": [], "day": "Tuesday", "startTime": "12:00", "endTime": "15:00", "semester": "a", "conflicts": ["89-132", "89-210", "89-226"], "index": "1", "year": "1" },
+
+    { "courseNum": "89-1111", "courseName": "תכנות מונחה עצמים", "dependencies": ["89-110"], "day": "Monday", "startTime": "15:00", "endTime": "18:00", "semester": "b", "conflicts": ["89-231", "89-511", "89-550"],"index":"0", "year": "1" },
+    { "courseNum": "89-1111", "courseName": "תכנות מונחה עצמים", "dependencies": ["89-110"], "day": "Monday", "startTime": "12:00", "endTime": "15:00", "semester": "b", "conflicts": [], "index": "1","year": "1" },
+    { "courseNum": "89-1111", "courseName": "תכנות מונחה עצמים", "dependencies": ["89-110"], "day": "Sunday", "startTime": "14:00", "endTime": "17:00", "semester": "b", "conflicts": [], "index": "2","year": "1" },
+    { "courseNum": "89-1111", "courseName": "תכנות מונחה עצמים", "dependencies": ["89-110"], "day": "Monday", "startTime": "09:00", "endTime": "12:00", "semester": "a", "conflicts": [], "index": "3","year": "1" },
+
+  { "courseNum": "89-112", "courseName": "אלגברה לינארית 1", "dependencies": ["89-1195"], "day": "Wednesday", "startTime": "12:00", "endTime": "15:00", "semester": "a", "conflicts": [], "year": "1" },
+  { "courseNum": "89-112", "courseName": "אלגברה לינארית 1", "dependencies": ["89-1195"], "day": "Sunday", "startTime": "17:00", "endTime": "20:00", "semester": "a", "conflicts": [], "year": "1" },
+  { "courseNum": "89-112", "courseName": "אלגברה לינארית 1", "dependencies": ["89-1195"], "day": "Sunday", "startTime": "11:00", "endTime": "14:00", "semester": "a", "conflicts": [], "year": "1" },
+  { "courseNum": "89-112", "courseName": "אלגברה לינארית 1", "dependencies": ["89-1195"], "day": "Sunday", "startTime": "13:00", "endTime": "16:00", "semester": "b", "conflicts": [], "year": "1" },
+
+  { "courseNum": "89-113", "courseName": "אלגברה לינארית 2", "dependencies": ["89-1195"], "day": "Tuesday", "startTime": "10:00", "endTime": "15:00", "semester": "b", "conflicts": [], "year": "1" },
+  { "courseNum": "89-113", "courseName": "אלגברה לינארית 2", "dependencies": ["89-1195"], "day": "Sunday", "startTime": "17:00", "endTime": "20:00", "semester": "b", "conflicts": [], "year": "1" },
+  { "courseNum": "89-113", "courseName": "אלגברה לינארית 2", "dependencies": ["89-1195"], "day": "Monday", "startTime": "12:00", "endTime": "15:00", "semester": "a", "conflicts": [], "year": "1" },
+
+
+  { "courseNum": "89-1200", "courseName": "מבני נתונים", "dependencies": ["89-110", "89-112"], "day": "Tuesday", "startTime": "15:00", "endTime": "18:00", "semester": "b", "conflicts": ["89-231"], "year": "1" },
+  { "courseNum": "89-1200", "courseName": "מבני נתונים", "dependencies": ["89-110", "89-112"], "day": "Tuesday", "startTime": "11:00", "endTime": "14:00", "semester": "b", "conflicts": ["89-231"], "year": "1" },
+  { "courseNum": "89-1200", "courseName": "מבני נתונים", "dependencies": ["89-110", "89-112"], "day": "Thursday", "startTime": "09:00", "endTime": "12:00", "semester": "b", "conflicts": ["89-231"], "year": "1" },
+  { "courseNum": "89-1200", "courseName": "מבני נתונים", "dependencies": ["89-110", "89-112"], "day": "Wednesday", "startTime": "09:00", "endTime": "12:00", "semester": "a", "conflicts": ["89-231"], "year": "1" },
+
+  { "courseNum": "89-132", "courseName": "חשבון אינפיניטסימלי 1", "dependencies": ["89-1195"], "day": "Wednesday", "startTime": "12:00", "endTime": "14:00", "semester": "a", "conflicts": ["89-560"], "year": "1" },
+  { "courseNum": "89-132", "courseName": "חשבון אינפיניטסימלי 1", "dependencies": ["89-1195"], "day": "Wednesday", "startTime": "10:00", "endTime": "12:00", "semester": "a", "conflicts": ["89-560"], "year": "1" },
+  { "courseNum": "89-132", "courseName": "חשבון אינפיניטסימלי 1", "dependencies": ["89-1195"], "day": "Wednesday", "startTime": "08:00", "endTime": "10:00", "semester": "a", "conflicts": ["89-560"], "year": "1" },
+  { "courseNum": "89-132", "courseName": "חשבון אינפיניטסימלי 1", "dependencies": ["89-1195"], "day": "Monday", "startTime": "12:00", "endTime": "14:00", "semester": "a", "conflicts": ["89-560"], "year": "1" },
+  { "courseNum": "89-132", "courseName": "חשבון אינפיניטסימלי 1", "dependencies": ["89-1195"], "day": "Monday", "startTime": "10:00", "endTime": "12:00", "semester": "a", "conflicts": ["89-560"], "year": "1" },
+  { "courseNum": "89-132", "courseName": "חשבון אינפיניטסימלי 1", "dependencies": ["89-1195"], "day": "Tuesday", "startTime": "10:00", "endTime": "12:00", "semester": "a", "conflicts": ["89-560"], "year": "1" },
+  { "courseNum": "89-132", "courseName": "חשבון אינפיניטסימלי 1", "dependencies": ["89-1195"], "day": "Tuesday", "startTime": "08:00", "endTime": "10:00", "semester": "a", "conflicts": ["89-560"], "year": "1" },
+
+  { "courseNum": "89-132", "courseName": "חשבון אינפיניטסימלי 1", "dependencies": ["89-1195"], "day": "Sunday", "startTime": "12:00", "endTime": "14:00", "semester": "b", "conflicts": ["89-560"], "year": "1" },
+  { "courseNum": "89-132", "courseName": "חשבון אינפיניטסימלי 1", "dependencies": ["89-1195"], "day": "Sunday", "startTime": "16:00", "endTime": "18:00", "semester": "b", "conflicts": ["89-560"], "year": "1" },
+  { "courseNum": "89-132", "courseName": "חשבון אינפיניטסימלי 1", "dependencies": ["89-1195"], "day": "Tuesday", "startTime": "12:00", "endTime": "14:00", "semester": "b", "conflicts": ["89-560"], "year": "1" },
+  { "courseNum": "89-132", "courseName": "חשבון אינפיניטסימלי 1", "dependencies": ["89-1195"], "day": "Tuesday", "startTime": "16:00", "endTime": "18:00", "semester": "b", "conflicts": ["89-560"], "year": "1" },
+  { "courseNum": "89-132", "courseName": "חשבון אינפיניטסימלי 1", "dependencies": ["89-1195"], "day": "Monday", "startTime": "16:00", "endTime": "18:00", "semester": "b", "conflicts": ["89-560"], "year": "1" },
+  { "courseNum": "89-132", "courseName": "חשבון אינפיניטסימלי 1", "dependencies": ["89-1195"], "day": "Monday", "startTime": "08:00", "endTime": "10:00", "semester": "b", "conflicts": ["89-560"], "year": "1" },
+
+  { "courseNum": "89-133", "courseName": "חשבון אינפיניטסימלי 2", "dependencies": ["89-132"], "day": "Sunday", "startTime": "10:00", "endTime": "12:00", "semester": "b", "conflicts": ["89-263"], "year": "1" },
+  { "courseNum": "89-133", "courseName": "חשבון אינפיניטסימלי 2", "dependencies": ["89-132"], "day": "Sunday", "startTime": "12:00", "endTime": "14:00", "semester": "b", "conflicts": ["89-263"], "year": "1" },
+  { "courseNum": "89-133", "courseName": "חשבון אינפיניטסימלי 2", "dependencies": ["89-132"], "day": "Sunday", "startTime": "14:00", "endTime": "16:00", "semester": "b", "conflicts": ["89-263"], "year": "1" },
+  { "courseNum": "89-133", "courseName": "חשבון אינפיניטסימלי 2", "dependencies": ["89-132"], "day": "Monday", "startTime": "10:00", "endTime": "12:00", "semester": "b", "conflicts": ["89-263"], "year": "1" },
+  { "courseNum": "89-133", "courseName": "חשבון אינפיניטסימלי 2", "dependencies": ["89-132"], "day": "Monday", "startTime": "12:00", "endTime": "14:00", "semester": "b", "conflicts": ["89-263"], "year": "1" },
+  { "courseNum": "89-133", "courseName": "חשבון אינפיניטסימלי 2", "dependencies": ["89-132"], "day": "Monday", "startTime": "14:00", "endTime": "16:00", "semester": "b", "conflicts": ["89-263"], "year": "1" },
+
+  { "courseNum": "89-133", "courseName": "חשבון אינפיניטסימלי 2", "dependencies": ["89-132"], "day": "Tuesday", "startTime": "08:00", "endTime": "10:00", "semester": "a", "conflicts": ["89-263"], "year": "1" },
+  { "courseNum": "89-133", "courseName": "חשבון אינפיניטסימלי 2", "dependencies": ["89-132"], "day": "Tuesday", "startTime": "14:00", "endTime": "16:00", "semester": "a", "conflicts": ["89-263"], "year": "1" },
+  { "courseNum": "89-133", "courseName": "חשבון אינפיניטסימלי 2", "dependencies": ["89-132"], "day": "Wednesday", "startTime": "08:00", "endTime": "10:00", "semester": "a", "conflicts": ["89-263"], "year": "1" },
+  { "courseNum": "89-133", "courseName": "חשבון אינפיניטסימלי 2", "dependencies": ["89-132"], "day": "Wednesday", "startTime": "14:00", "endTime": "16:00", "semester": "a", "conflicts": ["89-263"], "year": "1" },
+
+
+
+  { "courseNum": "89-1195", "courseName": "מתמטיקה בדידה", "dependencies": [], "day": "Wednesday", "startTime": "08:00", "endTime": "10:00", "semester": "a", "conflicts": ["89-685", "89-581"], "year": "1" },
+  { "courseNum": "89-1195", "courseName": "מתמטיקה בדידה", "dependencies": [], "day": "Wednesday", "startTime": "10:00", "endTime": "12:00", "semester": "a", "conflicts": ["89-685", "89-581"], "year": "1" },
+  { "courseNum": "89-1195", "courseName": "מתמטיקה בדידה", "dependencies": [], "day": "Wednesday", "startTime": "14:00", "endTime": "16:00", "semester": "a", "conflicts": ["89-685", "89-581"], "year": "1" },
+  { "courseNum": "89-1195", "courseName": "מתמטיקה בדידה", "dependencies": [], "day": "Sunday", "startTime": "10:00", "endTime": "12:00", "semester": "a", "conflicts": ["89-685", "89-581"], "year": "1" },
+  { "courseNum": "89-1195", "courseName": "מתמטיקה בדידה", "dependencies": [], "day": "Sunday", "startTime": "14:00", "endTime": "16:00", "semester": "a", "conflicts": ["89-685", "89-581"], "year": "1" },
+  { "courseNum": "89-1195", "courseName": "מתמטיקה בדידה", "dependencies": [], "day": "Monday", "startTime": "08:00", "endTime": "10:00", "semester": "a", "conflicts": ["89-685", "89-581"], "year": "1" },
+  { "courseNum": "89-1195", "courseName": "מתמטיקה בדידה", "dependencies": [], "day": "Monday", "startTime": "10:00", "endTime": "12:00", "semester": "a", "conflicts": ["89-685", "89-581"], "year": "1" },
+  { "courseNum": "89-1195", "courseName": "מתמטיקה בדידה", "dependencies": [], "day": "Sunday", "startTime": "08:00", "endTime": "10:00", "semester": "b", "conflicts": ["89-685", "89-581"], "year": "1" },
+  { "courseNum": "89-1195", "courseName": "מתמטיקה בדידה", "dependencies": [], "day": "Sunday", "startTime": "14:00", "endTime": "16:00", "semester": "b", "conflicts": ["89-685", "89-581"], "year": "1" },
+  { "courseNum": "89-1195", "courseName": "מתמטיקה בדידה", "dependencies": [], "day": "Tuesday", "startTime": "08:00", "endTime": "10:00", "semester": "b", "conflicts": ["89-685", "89-581"], "year": "1" },
+  { "courseNum": "89-1195", "courseName": "מתמטיקה בדידה", "dependencies": [], "day": "Tuesday", "startTime": "14:00", "endTime": "16:00", "semester": "b", "conflicts": ["89-685", "89-581"], "year": "1" },
+
+
+  { "courseNum": "89-1262", "courseName": "הסתברות כללית", "dependencies": ["89-112", "89-132", "89-1195"], "day": "Wednesday", "startTime": "11:00", "endTime": "14:00", "semester": "b", "conflicts": [], "year": "1" },
+  { "courseNum": "89-1262", "courseName": "הסתברות כללית", "dependencies": ["89-112", "89-132", "89-1195"], "day": "Thursday", "startTime": "14:00", "endTime": "17:00", "semester": "b", "conflicts": [], "year": "1" },
+  { "courseNum": "89-1262", "courseName": "הסתברות כללית", "dependencies": ["89-112", "89-132", "89-1195"], "day": "Sunday", "startTime": "11:00", "endTime": "14:00", "semester": "a", "conflicts": [], "year": "1" },
+
+
+
+  { "courseNum": "89-213", "courseName": "מודלים חישוביים", "dependencies": ["89-110", "89-1195"], "day": "Tuesday", "startTime": "19:00", "endTime": "21:00", "semester": "a", "conflicts": [], "year": "2" },
+
+
+  { "courseNum": "89-2197", "courseName": "מבנים בדידים", "dependencies": ["89-112", "89-1262", "89-1200", "89-132", "89-1195"], "day": "Tuesday", "startTime": "11:00", "endTime": "14:00", "semester": "a", "conflicts": ["89-110"], "year": "2" },
+  { "courseNum": "89-2197", "courseName": "מבנים בדידים", "dependencies": ["89-112", "89-1262", "89-1200", "89-132", "89-1195"], "day": "Tuesday", "startTime": "16:00", "endTime": "19:00", "semester": "a", "conflicts": ["89-110"], "year": "2" },
+
+
+
+  { "courseNum": "89-220", "courseName": "אלגוריתמים 1", "dependencies": ["89-110", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262"], "day": "Tuesday", "startTime": "13:00", "endTime": "16:00", "semester": "a", "conflicts": ["89-110"], "year": "2" },
+  { "courseNum": "89-220", "courseName": "אלגוריתמים 1", "dependencies": ["89-110", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262"], "day": "Tuesday", "startTime": "17:00", "endTime": "20:00", "semester": "a", "conflicts": ["89-110"], "year": "2" },
+  { "courseNum": "89-220", "courseName": "אלגוריתמים 1", "dependencies": ["89-110", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262"], "day": "Monday", "startTime": "15:00", "endTime": "18:00", "semester": "b", "conflicts": ["89-110"], "year": "2" },
+
+
+  { "courseNum": "89-2226", "courseName": "חישוביות וסיבוכיות", "dependencies": ["89-110", "89-112", "89-1200", "89-213", "89-132", "89-133", "89-1195", "89-1262", "89-220"], "day": "Monday", "startTime": "09:00", "endTime": "12:00", "semester": "b", "conflicts": ["89-679"], "year": "2" },
+  { "courseNum": "89-2226", "courseName": "חישוביות וסיבוכיות", "dependencies": ["89-110", "89-112", "89-1200", "89-213", "89-132", "89-133", "89-1195", "89-1262", "89-220"], "day": "Monday", "startTime": "12:00", "endTime": "15:00", "semester": "b", "conflicts": ["89-679"], "year": "2" },
+  { "courseNum": "89-2226", "courseName": "חישוביות וסיבוכיות", "dependencies": ["89-110", "89-112", "89-1200", "89-213", "89-132", "89-133", "89-1195", "89-1262", "89-220"], "day": "Thursday", "startTime": "11:00", "endTime": "14:00", "semester": "b", "conflicts": ["89-679"], "year": "2" },
+  { "courseNum": "89-2226", "courseName": "חישוביות וסיבוכיות", "dependencies": ["89-110", "89-112", "89-1200", "89-213", "89-132", "89-133", "89-1195", "89-1262", "89-220"], "day": "Thursday", "startTime": "11:00", "endTime": "14:00", "semester": "a", "conflicts": ["89-679"], "year": "2" },
+
+
+  { "courseNum": "89-230", "courseName": "מבנה מחשב", "dependencies": ["89-110", "89-1111", "89-111", "89-1200", "89-132", "89-1195"], "day": "Monday", "startTime": "12:00", "endTime": "15:00", "semester": "a", "conflicts": ["89-542"], "year": "2" },
+  { "courseNum": "89-230", "courseName": "מבנה מחשב", "dependencies": ["89-110", "89-1111", "89-111", "89-1200", "89-132", "89-1195"], "day": "Monday", "startTime": "15:00", "endTime": "18:00", "semester": "a", "conflicts": ["89-542"], "year": "2" },
+  { "courseNum": "89-230", "courseName": "מבנה מחשב", "dependencies": ["89-110", "89-1111", "89-111", "89-1200", "89-132", "89-1195"], "day": "Sunday", "startTime": "11:00", "endTime": "14:00", "semester": "b", "conflicts": ["89-542"], "year": "2" },
+
+
+  { "courseNum": "89-231", "courseName": "מערכות הפעלה", "dependencies": ["89-110", "89-1111", "89-111", "89-1200", "89-1195"], "day": "Tuesday", "startTime": "10:00", "endTime": "13:00", "semester": "b", "conflicts": ["89-1200"], "year": "2" },
+  { "courseNum": "89-231", "courseName": "מערכות הפעלה", "dependencies": ["89-110", "89-1111", "89-111", "89-1200", "89-1195"], "day": "Tuesday", "startTime": "16:00", "endTime": "19:00", "semester": "b", "conflicts": ["89-1200"], "year": "2" },
+  { "courseNum": "89-231", "courseName": "מערכות הפעלה", "dependencies": ["89-110", "89-1111", "89-111", "89-1200", "89-1195"], "day": "Sunday", "startTime": "11:00", "endTime": "14:00", "semester": "a", "conflicts": ["89-1200"], "year": "2" },
+
+
+
+
+  { "courseNum": "89-263", "courseName": "שיטות סטטיסטיות במדעי המחשב", "dependencies": ["89-112", "89-132", "89-133", "89-1195", "89-1262"], "day": "Sunday", "startTime": "11:00", "endTime": "13:00", "semester": "a", "conflicts": ["89-133"], "year": "2" },
+  { "courseNum": "89-263", "courseName": "שיטות סטטיסטיות במדעי המחשב", "dependencies": ["89-112", "89-132", "89-133", "89-1195", "89-1262"], "day": "Sunday", "startTime": "13:00", "endTime": "15:00", "semester": "a", "conflicts": ["89-133"], "year": "2" },
+  { "courseNum": "89-263", "courseName": "שיטות סטטיסטיות במדעי המחשב", "dependencies": ["89-112", "89-132", "89-133", "89-1195", "89-1262"], "day": "Sunday", "startTime": "14:00", "endTime": "16:00", "semester": "b", "conflicts": ["89-133"], "year": "2" },
+
+
+
+
+  { "courseNum": "89-2511", "courseName": "למידת מכונה", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262", "89-220"], "day": "Monday", "startTime": "12:00", "endTime": "15:00", "semester": "b", "conflicts": ["89-1111", "89-550"], "year": "2" },
+  { "courseNum": "89-2511", "courseName": "למידת מכונה", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262", "89-220"], "day": "Monday", "startTime": "16:00", "endTime": "19:00", "semester": "b", "conflicts": ["89-1111", "89-550"], "year": "2" },
+
+
+  { "courseNum": "89-2322", "courseName": "אלגוריתמים מתקדמים", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262", "89-220", "89-226"], "day": "Wednesday", "startTime": "09:00", "endTime": "12:00", "semester": "b", "conflicts": [], "year": "2" },
+  { "courseNum": "89-2322", "courseName": "אלגוריתמים מתקדמים", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262", "89-220", "89-226"], "day": "Wednesday", "startTime": "16:00", "endTime": "19:00", "semester": "b", "conflicts": [], "year": "2" },
+
+
+
+  { "courseNum": "89-333", "courseName": "חזית המחקר במדעי המחשב", "dependencies": [], "day": "Tuesday", "startTime": "08:00", "endTime": "10:00", "semester": "b", "conflicts": ["89-110", "89-1111", "89-112"], "year": "2" },
+
+
+  { "courseNum": "89-385", "courseName": "סדנא לפרויקטים", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-210", "89-220"], "day": "Thursday", "startTime": "13:00", "endTime": "16:00", "semester": "a", "conflicts": [], "year": "3" },
+
+  { "courseNum": "89-3210", "courseName": "תכנות מערכות מתקדם", "dependencies": ["89-110", "89-1111", "89-111", "89-1200", "89-1195"], "day": "Sunday", "startTime": "14:00", "endTime": "17:00", "semester": "a", "conflicts": ["89-5311"], "year": "0" },
+  { "courseNum": "89-3210", "courseName": "תכנות מערכות מתקדם", "dependencies": ["89-110", "89-1111", "89-111", "89-1200", "89-1195"], "day": "Sunday", "startTime": "17:00", "endTime": "20:00", "semester": "a", "conflicts": ["89-5311"], "year": "0" },
+  { "courseNum": "89-3210", "courseName": "תכנות מערכות מתקדם", "dependencies": ["89-110", "89-1111", "89-111", "89-1200", "89-1195"], "day": "Sunday", "startTime": "14:00", "endTime": "17:00", "semester": "b", "conflicts": ["89-5311"], "year": "0" },
+  { "courseNum": "89-3210", "courseName": "תכנות מערכות מתקדם", "dependencies": ["89-110", "89-1111", "89-111", "89-1200", "89-1195"], "day": "Sunday", "startTime": "17:00", "endTime": "20:00", "semester": "b", "conflicts": ["89-5311"], "year": "0" },
+
+
+
+
+  { "courseNum": "89-3311", "courseName": "שפות תכנות", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262", "89-210", "89-220", "89-230"], "day": "Sunday", "startTime": "11:00", "endTime": "14:00", "semester": "a", "conflicts": ["89-210"], "year": "0" },
+
+  { "courseNum": "89-5509", "courseName": "תכנות בטוח ואבטחת תקשוב", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-210", "89-220", "89-230", "89-1262"], "day": "Monday", "startTime": "10:00", "endTime": "13:00", "semester": "a", "conflicts": [], "year": "0" },
+  { "courseNum": "89-5509", "courseName": "תכנות בטוח ואבטחת תקשוב", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-210", "89-220", "89-230", "89-1262"], "day": "Monday", "startTime": "12:00", "endTime": "15:00", "semester": "b", "conflicts": [], "year": "0" },
+
+
+
+  { "courseNum": "89-200", "courseName": "לוגיקה מתמטית", "dependencies": ["89-1195"], "day": "Thursday", "startTime": "14:00", "endTime": "16:00", "semester": "a", "conflicts": ["89-547"], "year": "0" },
+
+  { "courseNum": "89-214", "courseName": "מבנים אלגבריים", "dependencies": ["89-112"], "day": "Sunday", "startTime": "14:00", "endTime": "16:00", "semester": "b", "conflicts": [], "year": "0" },
+
+  { "courseNum": "89-256", "courseName": "תורת המספרים", "dependencies": ["89-1195"], "day": "Wednesday", "startTime": "12:00", "endTime": "15:00", "semester": "b", "conflicts": ["89-560"], "year": "0" },
+
+  { "courseNum": "89-518", "courseName": "גיאומטריה חישובית", "dependencies": ["89-110", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-220"], "day": "Wednesday", "startTime": "14:00", "endTime": "16:00", "semester": "a", "conflicts": [], "year": "0" },
+
+  { "courseNum": "89-5350", "courseName": "מבוא לרשתות תקשורת", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262", "89-220", "89-1262"], "day": "Monday", "startTime": "16:00", "endTime": "18:00", "semester": "a", "conflicts": ["89-511"], "year": "0" },
+
+  { "courseNum": "89-546", "courseName": "הסקה אוטומטית ושימושיה", "dependencies": ["89-226", "89-110"], "day": "Sunday", "startTime": "17:00", "endTime": "19:00", "semester": "a", "conflicts": [], "year": "0" },
+
+  { "courseNum": "89-547", "courseName": "מדעי נתונים טבלאיים", "dependencies": ["89-511"], "day": "Tuesday", "startTime": "12:00", "endTime": "14:00", "semester": "a", "conflicts": ["89-200"], "year": "0" },
+
+  { "courseNum": "89-550", "courseName": "אבטחת תקשורת", "dependencies": ["89-110", "89-1111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-1262", "89-210", "89-220", "89-230", "89-509"], "day": "Thursday", "startTime": "11:00", "endTime": "13:00", "semester": "b", "conflicts": ["89-511"], "year": "0" },
+
+  { "courseNum": "89-560", "courseName": "עיבוד תמונות", "dependencies": ["89-110", "89-1111", "89-111", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-220", "89-1262"], "day": "Wednesday", "startTime": "12:00", "endTime": "14:00", "semester": "a", "conflicts": ["89-132", "89-256"], "year": "0" },
+
+  { "courseNum": "89-5570", "courseName": "בינה מלאכותית", "dependencies": ["89-110", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-220", "89-1262"], "day": "Wednesday", "startTime": "15:00", "endTime": "18:00", "semester": "a", "conflicts": [], "year": "0" },
+  { "courseNum": "89-5570", "courseName": "בינה מלאכותית", "dependencies": ["89-110", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-220", "89-1262"], "day": "Thursday", "startTime": "16:00", "endTime": "19:00", "semester": "b", "conflicts": [], "year": "0" },
+
+  { "courseNum": "89-575", "courseName": "שיטות אימות לתוכנה", "dependencies": ["89-1195", "89-200"], "day": "Monday", "startTime": "15:00", "endTime": "17:00", "semester": "a", "conflicts": [], "year": "0" },
+
+  { "courseNum": "89-5581", "courseName": "מערכות מסדי נתונים", "dependencies": ["89-110", "89-1195"], "day": "Wednesday", "startTime": "10:00", "endTime": "13:00", "semester": "a", "conflicts": ["89-1195"], "year": "0" },
+  { "courseNum": "89-5581", "courseName": "מערכות מסדי נתונים", "dependencies": ["89-110", "89-1195"], "day": "Tuesday", "startTime": "10:00", "endTime": "13:00", "semester": "b", "conflicts": ["89-1195"], "year": "0" },
+
+
+  { "courseNum": "83-815", "courseName": "מבוא לתורת המשחקים", "dependencies": ["89-112", "89-132", "89-133", "89-1195", "89-1262", "89-263"], "day": "Tuesday", "startTime": "14:00", "endTime": "16:00", "semester": "a", "conflicts": ["89-594", "89-669"], "year": "0" },
+  { "courseNum": "83-815", "courseName": "מבוא לתורת המשחקים", "dependencies": ["89-112", "89-132", "89-133", "89-1195", "89-1262", "89-263"], "day": "Wednesday", "startTime": "13:00", "endTime": "15:00", "semester": "b", "conflicts": ["89-594", "89-669"], "year": "0" },
+
+
+  { "courseNum": "89-5656", "courseName": "מבוא לקריפטוגרפיה", "dependencies": ["89-110", "89-112", "89-1200", "89-213", "89-132", "89-133", "89-1195", "89-220", "89-226", "89-1262"], "day": "Sunday", "startTime": "09:00", "endTime": "12:00", "semester": "a", "conflicts": [], "year": "0" },
+
+    { "courseNum": "89-680", "courseName": "עיבוד שפות טבעיות", "dependencies": ["89-220", "89-1262", "89-511"], "day": "Tuesday", "startTime": "16:00", "endTime": "19:00", "semester": "a", "conflicts": [], "year": "0" },
+
+  { "courseNum": "89-685", "courseName": "מבוא לרובוטיקה", "dependencies": ["89-110", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-220", "89-1262"], "day": "Wednesday", "startTime": "09:00", "endTime": "11:00", "semester": "a", "conflicts": ["89-1195", "89-688"], "year": "0" },
+
+  { "courseNum": "89-6876", "courseName": "שיטות דיפ לרנינג לטקסטים ורצפים", "dependencies": ["89-220", "89-1262", "89-511"], "day": "Tuesday", "startTime": "17:00", "endTime": "20:00", "semester": "b", "conflicts": ["89-715", "89-641"], "year": "0" },
+
+
+  { "courseNum": "89-3592", "courseName": "יסודות בממשק משתמש", "dependencies": ["89-110", "89-1111", "89-111", "89-210"], "day": "Wednesday", "startTime": "09:00", "endTime": "11:00", "semester": "a", "conflicts": [], "year": "0" },
+
+  { "courseNum": "89-512", "courseName": "ביולוגיה חישובית", "dependencies": ["89-110"], "day": "Thursday", "startTime": "12:00", "endTime": "14:00", "semester": "b", "conflicts": [], "year": "0" },
+
+  { "courseNum": "89-528", "courseName": "אלגוריתמים ביו-אינטליגנטיים", "dependencies": ["89-110", "89-112", "89-1200", "89-1195", "89-220", "89-132", "89-1262"], "day": "Sunday", "startTime": "18:00", "endTime": "20:00", "semester": "a", "conflicts": [], "year": "0" },
+
+  { "courseNum": "89-542", "courseName": "ניהול נתוני עתק ברשת", "dependencies": ["89-110", "89-1111", "89-111", "89-112", "89-1200", "89-213", "89-1195", "89-581"], "day": "Tuesday", "startTime": "13:00", "endTime": "15:00", "semester": "a", "conflicts": ["89-230"], "year": "0" },
+
+  { "courseNum": "89-5441", "courseName": "מבוא לממשקי אדם-רובוט", "dependencies": ["89-210"], "day": "Thursday", "startTime": "14:00", "endTime": "16:00", "semester": "b", "conflicts": [], "year": "0" },
+
+  { "courseNum": "89-553", "courseName": "קריפטואנליזה", "dependencies": ["89-110", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-220", "89-1262"], "day": "Sunday", "startTime": "17:00", "endTime": "20:00", "semester": "b", "conflicts": [], "year": "0" },
+
+  { "courseNum": "89-561", "courseName": "ראיה ממוחשבת", "dependencies": ["89-110", "89-112", "89-1200", "89-132", "89-133", "89-1195", "89-220", "89-1262"], "day": "Wednesday", "startTime": "14:00", "endTime": "16:00", "semester": "b", "conflicts": [], "year": "0" },
+
+  { "courseNum": "89-5993", "courseName": "קורס מחקר מתקדם באלגוריתמיקה 1", "dependencies": [], "day": "Sunday", "startTime": "16:00", "endTime": "18:00", "semester": "a", "conflicts": [], "year": "0" },
+
+  { "courseNum": "89-6561", "courseName": "מערכות הוכחה קריפטוגרפיות", "dependencies": ["89-226", "89-263"], "day": "Monday", "startTime": "10:00", "endTime": "12:00", "semester": "a", "conflicts": [], "year": "0" },
+
+  { "courseNum": "89-657", "courseName": "חישוב בטוח", "dependencies": ["89-110", "89-1111", "89-111", "89-112", "89-1200", "89-213", "89-132", "89-133", "89-1195", "89-220", "89-226", "89-1262", "89-656"], "day": "Sunday", "startTime": "10:00", "endTime": "12:00", "semester": "b", "conflicts": [], "year": "0" },
+
+  { "courseNum": "89-669", "courseName": "סדנה ברובוטיקה", "dependencies": [], "day": "Thursday", "startTime": "14:00", "endTime": "16:00", "semester": "b", "conflicts": ["89-594", "89-617"], "year": "0" },
+
+  { "courseNum": "89-679", "courseName": "סדנה במסדי נתונים", "dependencies": ["89-110", "89-111", "89-1111", "89-112", "89-1200", "89-213", "89-1195", "89-581"], "day": "Wednesday", "startTime": "10:00", "endTime": "12:00", "semester": "a", "conflicts": ["89-226"], "year": "0" },
+
+  { "courseNum": "89-698", "courseName": "תכנון מכניזמים", "dependencies": ["89-220", "89-3222"], "day": "Sunday", "startTime": "09:00", "endTime": "11:00", "semester": "b", "conflicts": [], "year": "0" }
 ]
