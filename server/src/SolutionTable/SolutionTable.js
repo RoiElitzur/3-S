@@ -1,11 +1,14 @@
 import './SolutionTable.css';
 import { useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
 
-function SolutionTable() {
+
+function SolutionTable () {
     const location = useLocation();
     const { solution = [], dependencies = {} } = location.state || {};
-    console.log('Solution:', solution);
-    console.log('Dependencies:', dependencies);
+    const [names, setNames] = useState([]);
+    // console.log('Solution:', solution);
+    // console.log('Dependencies:', dependencies);
     const navigate = useNavigate();
 
     const handleGoBackToSolutions = () => {
@@ -38,6 +41,47 @@ function SolutionTable() {
 
     const table = Array(timeSlots.length).fill(null).map(() => Array(7).fill(''));
 
+
+    useEffect(() => {
+        const fetchDependencies = async () => {
+            const allDependencies = {};
+            let dependencyIndex = 1;
+
+            // Assuming 'solution' is available globally or passed as a prop
+            solution
+                .filter(course => course.dependencies.length > 0)
+                .forEach(course => {
+                    course.dependencies.forEach(dep => {
+                        allDependencies[dependencyIndex] = dep;
+                        dependencyIndex++;
+                    });
+                });
+
+            try {
+                const res = await fetch('http://localhost:12345/Courses/names', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(allDependencies),
+                });
+
+                if (res.status !== 200) {
+                    return;
+                }
+
+                const data = await res.json(); // Assuming the response is JSON
+                console.log(data);
+                setNames(data);
+
+            } catch (error) {
+                console.error('Error during HTTP request:', error);
+            }
+        };
+
+        fetchDependencies();
+    }, []); // Empty array ensures the effect only runs once on component mount
+
     try {
         solution.forEach(course => {
             const dayIndex = getDayIndex(course.day);
@@ -63,10 +107,35 @@ function SolutionTable() {
         return <div>Error: Invalid data format</div>;
     }
 
-    // Prepare the dependency list
-    const dependencyList = solution.flatMap(course => {
-        return course.dependencies.map(dep => `${course.courseNum} -> ${dep}`);
-    });
+
+    // const dependencyList = solution
+    //     .filter(course => course.dependencies.length > 0) // Filter out courses without dependencies
+    //     .map((course, courseIndex) => (
+    //         <div key={`course-container-${courseIndex}`}> {/* Use div as a container */}
+    //             <li key={`course-${courseIndex}`}>{course.courseName} -></li>
+    //             {course.dependencies.map((dep, depIndex) => (
+    //                 <li key={`dep-${courseIndex}-${depIndex}`} style={{ marginLeft: '20px' }}>
+    //                     {names[dep] || dep} {/* Use course name from `names` or fallback to course number */}
+    //                 </li>
+    //             ))}
+    //         </div>
+    //     ));
+
+    const dependencyList = solution
+        .filter(course => course.dependencies.length > 0) // Filter out courses without dependencies
+        .map((course, courseIndex) => (
+            <div key={`course-container-${courseIndex}`}> {/* Use div as a container */}
+                <li key={`course-${courseIndex}`} className="course-name">
+                    {course.courseName} -> {/* Course name bold */}
+                </li>
+                {course.dependencies.map((dep, depIndex) => (
+                    <li key={`dep-${courseIndex}-${depIndex}`} className="dependency">
+                        {names[dep] || dep} {/* Use course name from `names` or fallback to course number */}
+                    </li>
+                ))}
+            </div>
+        ));
+
 
     return (
         <div className="solution-container">
@@ -74,9 +143,7 @@ function SolutionTable() {
                 <h2>Dependencies</h2>
                 <ul>
                     {dependencyList.length > 0 ? (
-                        dependencyList.map((dependency, index) => (
-                            <li key={index}>{dependency}</li>
-                        ))
+                        dependencyList
                     ) : (
                         <li>No dependencies found</li>
                     )}

@@ -128,3 +128,24 @@ html, body {
     box-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
 }
 
+
+.course-name {
+    font-weight: bold; /* Make the course name bold */
+    font-size: 1.1em; /* Slightly smaller font size */
+}
+
+.dependencies-list li {
+    margin-bottom: 10px;
+    font-size: 1em; /* Smaller font size for the list items */
+}
+
+.dependency {
+    margin-left: 20px; /* Indent dependencies */
+    margin-right: 20px; /* Indent dependencies */
+    font-weight: normal; /* Make dependencies normal weight */
+    font-size: 0.9em; /* Even smaller font size for dependencies */
+}
+
+
+
+

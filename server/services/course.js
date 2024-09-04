@@ -8,6 +8,35 @@ const getCourses = async () => {
     return courses;
 };
 
+// const getNames = async () => {
+//     const courses = await Course.find({});
+//     return courses;
+// };
+
+const getNames = async (input) => {
+    try {
+        // Extract all course numbers (dependencies) from the input
+        const courseNums = Object.values(input);
+
+        // Find only the courses whose courseNum matches the input dependencies
+        const courses = await Course.find({ courseNum: { $in: courseNums } });
+
+        // Create a map {courseNum: courseName}
+        const courseMap = {};
+
+        courses.forEach(course => {
+            courseMap[course.courseNum] = course.courseName;
+        });
+
+        console.log(courseMap);
+
+        return courseMap;
+    } catch (error) {
+        console.error('Error fetching courses:', error);
+        throw error;
+    }
+};
+
 // const createSolutions = async (input) => {
 //     try {
 //         const selectedYear = input.selectedYear;
@@ -517,4 +546,4 @@ const getDependencies = async (input) => {
     }
 };
 
-export default { getCourses, createSolutions, getDependencies };
+export default { getCourses, createSolutions, getDependencies, getNames };

@@ -8,10 +8,10 @@
     { "courseNum": "89-1111", "courseName": "תכנות מונחה עצמים", "dependencies": ["89-110"], "day": "Sunday", "startTime": "14:00", "endTime": "17:00", "semester": "b", "conflicts": [], "index": "2","year": "1" },
     { "courseNum": "89-1111", "courseName": "תכנות מונחה עצמים", "dependencies": ["89-110"], "day": "Monday", "startTime": "09:00", "endTime": "12:00", "semester": "a", "conflicts": [], "index": "3","year": "1" },
 
-  { "courseNum": "89-112", "courseName": "אלגברה לינארית 1", "dependencies": ["89-1195"], "day": "Wednesday", "startTime": "12:00", "endTime": "15:00", "semester": "a", "conflicts": [], "year": "1" },
-  { "courseNum": "89-112", "courseName": "אלגברה לינארית 1", "dependencies": ["89-1195"], "day": "Sunday", "startTime": "17:00", "endTime": "20:00", "semester": "a", "conflicts": [], "year": "1" },
-  { "courseNum": "89-112", "courseName": "אלגברה לינארית 1", "dependencies": ["89-1195"], "day": "Sunday", "startTime": "11:00", "endTime": "14:00", "semester": "a", "conflicts": [], "year": "1" },
-  { "courseNum": "89-112", "courseName": "אלגברה לינארית 1", "dependencies": ["89-1195"], "day": "Sunday", "startTime": "13:00", "endTime": "16:00", "semester": "b", "conflicts": [], "year": "1" },
+  { "courseNum": "89-112", "courseName": "אלגברה לינארית 1", "dependencies": ["89-1195"], "day": "Wednesday", "startTime": "12:00", "endTime": "15:00", "semester": "a", "conflicts": [], "index": "0", "year": "1" },
+  { "courseNum": "89-112", "courseName": "אלגברה לינארית 1", "dependencies": ["89-1195"], "day": "Sunday", "startTime": "17:00", "endTime": "20:00", "semester": "a", "conflicts": [], "index": "1", "year": "1" },
+  { "courseNum": "89-112", "courseName": "אלגברה לינארית 1", "dependencies": ["89-1195"], "day": "Sunday", "startTime": "11:00", "endTime": "14:00", "semester": "a", "conflicts": [], "index": "2", "year": "1" },
+  { "courseNum": "89-112", "courseName": "אלגברה לינארית 1", "dependencies": ["89-1195"], "day": "Sunday", "startTime": "13:00", "endTime": "16:00", "semester": "b", "conflicts": [], "index": "3", "year": "1" },
 
   { "courseNum": "89-113", "courseName": "אלגברה לינארית 2", "dependencies": ["89-1195"], "day": "Tuesday", "startTime": "10:00", "endTime": "15:00", "semester": "b", "conflicts": [], "year": "1" },
   { "courseNum": "89-113", "courseName": "אלגברה לינארית 2", "dependencies": ["89-1195"], "day": "Sunday", "startTime": "17:00", "endTime": "20:00", "semester": "b", "conflicts": [], "year": "1" },

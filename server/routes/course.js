@@ -6,6 +6,7 @@ const router = express.Router();
 router.get('/', courseController.getCourses);
 router.post('/',courseController.createSolutions)
 router.post('/dependencies',courseController.getDependencies)
+router.post('/names',courseController.getNames)
 
 
 
