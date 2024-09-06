@@ -9,14 +9,11 @@ import Preferences from './Preferences/Preferences.js'
 import { useState } from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 function App() {
-  const [token,setToken] = useState('');
   const [view,setView] = useState('welcome');
-  const [username, setUsername] = useState('');
   const handleViewChange = (newView) => {
     setView(newView);
   };
 
-  let screen = null;
   return(
   <BrowserRouter>
     <Routes>
@@ -28,7 +25,7 @@ function App() {
         onRegisterSubmit={() => handleViewChange('login')} />}>
       </Route>
       <Route path="/login" element={<Welcome onRegisterClick={() => handleViewChange('register')}
-                                        onValidSubmit={() => handleViewChange('preferences')} setName={setUsername} setToken={setToken} />}>
+                                        onValidSubmit={() => handleViewChange('preferences')} />}>
       </Route>
       <Route path="/" element={<Landing onRegisterClick={() => handleViewChange('register')}
                                                           onLoginClick={() => handleViewChange('login')} />} >

@@ -10,7 +10,8 @@ body, html {
 
 /* Main container styling */
 .preferences-container {
-    background: linear-gradient(180deg, #4a148c, #1a1a1a);
+    max-height: 90%;
+    /*background: linear-gradient(180deg, #4a148c, #1a1a1a);*/
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);

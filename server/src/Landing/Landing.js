@@ -17,13 +17,13 @@ function Landing(props) {
             <div className="landing">
                 <div className="navbar">
                     <div className="brand">3-S</div>
-                    <div className="nav-links">
-                        <a href="#" className="nav-button">About</a>
-                        <a href="#" className="nav-button">Preferences</a>
-                        <a href="#" className="nav-button">Solutions List</a>
-                        <a href="#" className="nav-button">Solution Preview</a>
-                        <a href="#" className="nav-button">Contact us</a>
-                    </div>
+                    {/*<div className="nav-links">*/}
+                    {/*    <a href="#" className="nav-button">About</a>*/}
+                    {/*    <a href="#" className="nav-button">Preferences</a>*/}
+                    {/*    <a href="#" className="nav-button">Solutions List</a>*/}
+                    {/*    <a href="#" className="nav-button">Solution Preview</a>*/}
+                    {/*    <a href="#" className="nav-button">Contact us</a>*/}
+                    {/*</div>*/}
                 </div>
                 <div className="hero-content">
 

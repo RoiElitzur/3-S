@@ -1,26 +1,262 @@
+/*html, body {*/
+/*    height: 100%;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+
+/*.solution-container {*/
+/*    display: flex;*/
+/*    justify-content: flex-start; !* Align items to the start, list will be on the left *!*/
+/*    align-items: flex-start;*/
+/*    padding: 20px;*/
+/*    background: linear-gradient(180deg, #4a148c, #1a1a1a);*/
+/*    min-height: 100%;*/
+/*}*/
+
+/*.dependencies-list {*/
+/*    width: 20%; !* Make the dependencies list smaller *!*/
+/*    max-width: 200px; !* Limit the maximum width *!*/
+/*    background-color: rgba(255, 255, 255, 0.1);*/
+/*    padding: 20px;*/
+/*    border-radius: 8px;*/
+/*    color: white;*/
+/*    margin-right: 20px; !* Add some space between the list and the calendar *!*/
+/*}*/
+
+/*.dependencies-list h2 {*/
+/*    margin-bottom: 10px;*/
+/*    font-size: 1.5em;*/
+/*}*/
+
+/*.dependencies-list ul {*/
+/*    list-style-type: none;*/
+/*    padding: 0;*/
+/*}*/
+
+/*.dependencies-list li {*/
+/*    margin-bottom: 10px;*/
+/*    font-size: 1.2em;*/
+/*}*/
+
+/*.schedule-container {*/
+/*    flex-grow: 1; !* Allow the schedule container to take up the remaining space *!*/
+/*    text-align: center;*/
+/*}*/
+
+/*.headline {*/
+/*    font-size: 2em;*/
+/*    margin-bottom: 20px;*/
+/*    font-weight: bold;*/
+/*    color: white;*/
+/*}*/
+
+/*.schedule-table {*/
+/*    width: 100%;*/
+/*    border-collapse: collapse;*/
+/*    background-color: rgba(13, 9, 41, 0.51);*/
+/*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/
+/*}*/
+
+/*.schedule-table th, .schedule-table td {*/
+/*    border: medium double #e0e0e0;*/
+/*    padding: 15px;*/
+/*    text-align: center;*/
+/*    vertical-align: middle;*/
+/*    color: white;*/
+/*}*/
+
+/*.schedule-table th {*/
+/*    background-color: rgba(13, 9, 41, 0.51);*/
+/*    font-weight: bold;*/
+/*    color: white;*/
+/*}*/
+
+/*.schedule-table td {*/
+/*    word-wrap: break-word;*/
+/*}*/
+
+/*@media screen and (max-width: 768px) {*/
+/*    .schedule-table th, .schedule-table td {*/
+/*        padding: 10px;*/
+/*    }*/
+/*}*/
+
+/*@media screen and (max-width: 480px) {*/
+/*    .schedule-table th, .schedule-table td {*/
+/*        padding: 5px;*/
+/*    }*/
+
+/*    .headline {*/
+/*        font-size: 1.5em;*/
+/*    }*/
+/*}*/
+
+/*.button-container {*/
+/*    position: absolute;*/
+/*    top: 20px;*/
+/*    right: 20px;*/
+/*    display: flex;*/
+/*    gap: 10px;*/
+/*}*/
+
+/*.back-button {*/
+/*    background-color: #7c63c5;*/
+/*    color: white;*/
+/*    padding: 5px 10px;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    font-size: 0.9em;*/
+/*    font-weight: bold;*/
+/*    text-transform: uppercase;*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.3s ease, transform 0.3s ease;*/
+/*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/
+/*}*/
+
+/*.back-button:hover {*/
+/*    background-color: #7a5fc8;*/
+/*    transform: scale(1.05);*/
+/*}*/
+
+/*.back-button:active {*/
+/*    background-color: #6c4dc6;*/
+/*    transform: scale(0.95);*/
+/*}*/
+
+/*.back-button:focus {*/
+/*    outline: none;*/
+/*    box-shadow: 0 0 10px rgba(255, 111, 97, 0.5);*/
+/*}*/
+
+
+/*!*.course-name {*!*/
+/*!*    font-weight: bold; !* Make the course name bold *!*!*/
+/*!*    font-size: 1.1em; !* Slightly smaller font size *!*!*/
+/*!*}*!*/
+
+/*!*.dependencies-list li {*!*/
+/*!*    margin-bottom: 10px;*!*/
+/*!*    font-size: 1em; !* Smaller font size for the list items *!*!*/
+/*!*}*!*/
+
+/*!*.dependency {*!*/
+/*!*    margin-left: 20px; !* Indent dependencies *!*!*/
+/*!*    margin-right: 20px; !* Indent dependencies *!*!*/
+/*!*    font-weight: normal; !* Make dependencies normal weight *!*!*/
+/*!*    font-size: 0.9em; !* Even smaller font size for dependencies *!*!*/
+/*!*}*!*/
+
+/*.dependencies-list {*/
+/*    width: 25%; !* Wider list for larger screens *!*/
+/*    max-width: 300px; !* Limit the maximum width *!*/
+/*    background-color: rgba(255, 255, 255, 0.1);*/
+/*    padding: 20px;*/
+/*    border-radius: 8px;*/
+/*    color: white;*/
+/*    margin-right: 20px; !* Add some space between the list and the calendar *!*/
+/*    margin-top: 80px;*/
+/*    max-height: 600px; !* Set a maximum height to prevent the list from taking up too much space *!*/
+/*    overflow-y: auto; !* Enable vertical scrolling when the content exceeds max height *!*/
+/*}*/
+
+/*@media screen and (max-width: 768px) {*/
+/*    .dependencies-list {*/
+/*        width: 80%;*/
+/*        max-width: none; !* Full width on smaller screens *!*/
+/*        max-height: 300px; !* Adjust height for medium screens *!*/
+/*    }*/
+/*}*/
+
+/*@media screen and (max-width: 480px) {*/
+/*    .dependencies-list {*/
+/*        width: 100%;*/
+/*        max-height: 250px; !* Adjust height for smaller screens *!*/
+/*    }*/
+/*}*/
+
+/*.course-name {*/
+/*    font-weight: bold; !* Make the course name bold *!*/
+/*    font-size: 1.1em; !* Slightly smaller font size *!*/
+/*}*/
+
+/*.dependencies-list li {*/
+/*    margin-bottom: 10px;*/
+/*    font-size: 1em; !* Standard font size for the list items *!*/
+/*}*/
+
+/*.dependency {*/
+/*    margin-left: 20px; !* Indent dependencies *!*/
+/*    margin-right: 20px; !* Add spacing to the right for padding *!*/
+/*    font-weight: normal; !* Make dependencies normal weight *!*/
+/*    font-size: 0.9em; !* Smaller font size for dependencies *!*/
+/*}*/
+
+/*!* Optional: Add custom scrollbar styling *!*/
+/*.dependencies-list::-webkit-scrollbar {*/
+/*    width: 8px;*/
+/*}*/
+
+/*.dependencies-list::-webkit-scrollbar-thumb {*/
+/*    background-color: rgba(255, 255, 255, 0.2);*/
+/*    border-radius: 8px;*/
+/*}*/
+
+/*.dependencies-list::-webkit-scrollbar-thumb:hover {*/
+/*    background-color: rgba(255, 255, 255, 0.3);*/
+/*}*/
+
+
+
+
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 
 .solution-container {
     display: flex;
-    justify-content: flex-start; /* Align items to the start, list will be on the left */
-    align-items: flex-start;
+    max-height: 80%;
+    flex-direction: row; /* Arrange children side by side */
+    justify-content: flex-start; /* Align items to the start */
+    align-items: flex-start; /* Align items to the start of the container */
     padding: 20px;
     background: linear-gradient(180deg, #4a148c, #1a1a1a);
-    min-height: 100%;
+    min-height: 100vh; /* Ensure container fills the viewport height */
 }
 
+
 .dependencies-list {
-    width: 20%; /* Make the dependencies list smaller */
-    max-width: 200px; /* Limit the maximum width */
+    width: 25%; /* Allocate 25% of the container width to the list */
+    max-width: 300px; /* Limit the maximum width */
     background-color: rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: 8px;
     color: white;
-    margin-right: 20px; /* Add some space between the list and the calendar */
+    margin-right: 20px; /* Space between this list and the schedule container */
+    height: auto; /* Adjusts height automatically */
+    max-height: 80vh; /* Maximum height set to 80% of the viewport height */
+    overflow-y: auto; /* Enables vertical scrolling when necessary */
+}
+
+/* Enhanced scrollbar styling for a better appearance */
+.dependencies-list::-webkit-scrollbar {
+    width: 8px; /* Set the width of the scrollbar */
+}
+
+.dependencies-list::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2); /* Light scrollbar for slight visibility */
+    border-radius: 8px; /* Rounded corners for the scrollbar thumb */
+}
+
+.dependencies-list::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Slightly darker on hover for better interaction feedback */
 }
 
 .dependencies-list h2 {
@@ -65,25 +301,18 @@ html, body {
     color: white;
 }
 
-.schedule-table th {
-    background-color: rgba(13, 9, 41, 0.51);
-    font-weight: bold;
-    color: white;
-}
-
-.schedule-table td {
-    word-wrap: break-word;
-}
-
 @media screen and (max-width: 768px) {
+    .solution-container {
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+    }
+
+    .dependencies-list {
+        width: 100%; /* Full width on smaller screens */
+        margin-right: 0; /* Remove margin between list and table on smaller screens */
+    }
+
     .schedule-table th, .schedule-table td {
         padding: 10px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .schedule-table th, .schedule-table td {
-        padding: 5px;
     }
 
     .headline {
@@ -91,8 +320,14 @@ html, body {
     }
 }
 
+@media screen and (max-width: 480px) {
+    .schedule-table th, .schedule-table td {
+        padding: 5px;
+    }
+}
+
 .button-container {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
     display: flex;
@@ -128,24 +363,17 @@ html, body {
     box-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
 }
 
-
-.course-name {
-    font-weight: bold; /* Make the course name bold */
-    font-size: 1.1em; /* Slightly smaller font size */
+/* Enhanced scrollbar for dependencies list */
+.dependencies-list::-webkit-scrollbar {
+    width: 8px;
 }
 
-.dependencies-list li {
-    margin-bottom: 10px;
-    font-size: 1em; /* Smaller font size for the list items */
+.dependencies-list::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
 }
 
-.dependency {
-    margin-left: 20px; /* Indent dependencies */
-    margin-right: 20px; /* Indent dependencies */
-    font-weight: normal; /* Make dependencies normal weight */
-    font-size: 0.9em; /* Even smaller font size for dependencies */
+.dependencies-list::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3);
 }
-
-
-
 

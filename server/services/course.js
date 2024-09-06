@@ -8,11 +8,6 @@ const getCourses = async () => {
     return courses;
 };
 
-// const getNames = async () => {
-//     const courses = await Course.find({});
-//     return courses;
-// };
-
 const getNames = async (input) => {
     try {
         // Extract all course numbers (dependencies) from the input

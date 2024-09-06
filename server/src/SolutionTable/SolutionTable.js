@@ -26,8 +26,14 @@ function SolutionTable () {
         localStorage.removeItem('solutions');
         navigate('/');
     };
-
     const timeSlots = [
+        '08:00 – 09:00', '09:00 – 10:00', '10:00 – 11:00',
+        '11:00 – 12:00', '12:00 – 13:00', '13:00 – 14:00',
+        '14:00 – 15:00', '15:00 – 16:00', '16:00 – 17:00',
+        '17:00 – 18:00', '18:00 – 19:00', '19:00 – 20:00'
+    ];
+
+    const timeSlots1 = [
         '08:00 – 09:00', '09:00 – 10:00', '10:00 – 11:00',
         '11:00 – 12:00', '12:00 – 13:00', '13:00 – 14:00',
         '14:00 – 15:00', '15:00 – 16:00', '16:00 – 17:00',
@@ -37,7 +43,7 @@ function SolutionTable () {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     const getDayIndex = (day) => days.indexOf(day);
-    const getTimeSlotIndex = (time) => timeSlots.findIndex(slot => slot.startsWith(time));
+    const getTimeSlotIndex = (time) => timeSlots1.findIndex(slot => slot.startsWith(time));
 
     const table = Array(timeSlots.length).fill(null).map(() => Array(7).fill(''));
 
@@ -107,19 +113,6 @@ function SolutionTable () {
         return <div>Error: Invalid data format</div>;
     }
 
-
-    // const dependencyList = solution
-    //     .filter(course => course.dependencies.length > 0) // Filter out courses without dependencies
-    //     .map((course, courseIndex) => (
-    //         <div key={`course-container-${courseIndex}`}> {/* Use div as a container */}
-    //             <li key={`course-${courseIndex}`}>{course.courseName} -></li>
-    //             {course.dependencies.map((dep, depIndex) => (
-    //                 <li key={`dep-${courseIndex}-${depIndex}`} style={{ marginLeft: '20px' }}>
-    //                     {names[dep] || dep} {/* Use course name from `names` or fallback to course number */}
-    //                 </li>
-    //             ))}
-    //         </div>
-    //     ));
 
     const dependencyList = solution
         .filter(course => course.dependencies.length > 0) // Filter out courses without dependencies

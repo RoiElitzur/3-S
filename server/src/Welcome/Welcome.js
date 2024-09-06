@@ -15,14 +15,8 @@ function Welcome(props){
             username: usernameRef.current.value,
             password: passRef.current.value
             }
-            // Send post request to the server asynchronously
-            // fetch sends the asynchronous request
-            // The request is sent to the server according to the url that was set in: document.forms[0].action
-            // The await keyword ensures that 'res' will have the result from the server.
-            // even though 'fetch' is asynchronous
-            
             try {
-                const res = await fetch('http://localhost:12345/Tokens', {
+                const res = await fetch('http://localhost:12345/Users/validation', {
             'method': 'POST', // send a post request
             'headers': {
             'Content-Type': 'application/json', // the data (username/password) is in the form of a JSON object
@@ -34,14 +28,7 @@ function Welcome(props){
                 return false;
             }
             else {
-            // Correct username/password
-            // Take the token the server sent us
-            // and make *another* request to the homepage
-            // but attach the token to the request
-            const resText = await res.text();
-            props.setToken(resText);
-            return true;
-           
+                return true;
             }
             } catch(error) {
                 return false;
@@ -66,7 +53,6 @@ function Welcome(props){
         event.preventDefault();
         if(validate()){
             if(await checkLogin()) {
-                props.setName(usernameRef.current.value);
                 props.onValidSubmit();
                 navigate('/preferences');
                 return true;
