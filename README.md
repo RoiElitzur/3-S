@@ -1,25 +1,37 @@
-# Android WhatsApp Application
-This is an Android application that simulates a messaging platform similar to WhatsApp. It includes several screens such as login, register, chat list, current chat, and settings. The application allows users to send and receive messages in real-time.
-# About the screens
-# Login
-The login screen is the entry point of the application. It allows existing users to sign in and access their WhatsApp account. The screen typically consists of a username field and a password field. Users need to provide their valid credentials to proceed further. Once authenticated, the application verifies the user's information and grants access to the chat interface.
-# Register
-The register screen enables new users to create a WhatsApp account. It presents a form where users can enter their personal information, such as name, picture, and password. After the user fills out the necessary details and submits the form, the application performs validation checks and creates a new account for the user. Upon successful registration, users can log in using their newly created credentials.
-# Chat List
-The chat list screen is one of the components of the application, where users can communicate with their contacts in real-time. It displays the user's contacts list , the user can choose to enter into one of his contacts' conversation. Users can send text messages.
-# Current Chat
-The current chat screen is one of the components of the application, where a user can send text messages to the chosen user and to see the conversation's history.
-# Settings
-The settings screen is one of the components of the application, where a user can change the server's URL and the theme of the application.
-###  
-# How to Run the Project
-Clone the repository to your local machine.
-# Server side
-1. Go to the directory called "server"
-2. Install the necessary dependencies by running the appropriate command  : npm install
-3. Start the development server: node app.js
-# Client side
-1. In order to run the application there are two options:
-  - Use Android Studio's emulator and run the project
-  - Install the app on Android phone and run it.
-2. The default connected server is in the URL "http://10.0.2.2:12345" for Android Studio's emulator, in order to connect another server you need to change it in the settings Activity.    
+# 3-S
+This application helps manage course dependencies and schedules, facilitating students and academic staff to visualize and plan academic schedules more efficiently. It features several screens including a landing page, login, signup, preferences, solutions, and a detailed solution table.
+
+## About the Screens
+### Landing Page
+The landing page serves as the initial point of contact for users, providing information about the application and navigation options to either log in or sign up.
+
+### Login
+The login screen allows existing users to sign in to their accounts by entering their credentials. Authentication is handled securely to ensure that only registered users can access their personalized data.
+
+### Signup
+The signup screen enables new users to create an account. Users need to provide personal details such as name, email, and password. The application conducts validation checks to ensure data integrity and security before creating a new account.
+
+### Preferences
+In the preferences section, users can specify their course preferences and other settings that influence how the application generates solutions for managing course schedules and dependencies.
+
+### Solutions
+This screen presents various generated solutions based on the user's preferences. Users can view different scheduling options and select the one that best suits their needs.
+
+### Solution Table
+The solution table provides a detailed view of the selected scheduling solution, displaying a comprehensive table with timeslots, course assignments, and other relevant details.
+
+## How to Run the Project
+Ensure you have Node.js installed on your local machine to run both the server and client parts of the application.
+
+### Server Side
+1. Navigate to the server directory from your command line:
+   ```bash
+   cd server
+   npm install
+   node app.js
+
+### Client Side
+1. Navigate to the server directory from your command line:
+   ```bash
+   cd server
+   npm start
