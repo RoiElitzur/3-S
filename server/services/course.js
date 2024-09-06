@@ -23,7 +23,7 @@ const getNames = async (input) => {
             courseMap[course.courseNum] = course.courseName;
         });
 
-        console.log(courseMap);
+        //console.log(courseMap);
 
         return courseMap;
     } catch (error) {
@@ -215,7 +215,7 @@ const createSolutions = async (input) => {
                 courseMap.get(course.courseNum).push(course);
             }
         });
-        console.log(courseMap);
+        //console.log(courseMap);
         // Generate packageContent
         courseMap.forEach((courseInstances, courseNum) => {
             // Write the Package and Conflicts lines for each courseNum instance
@@ -223,7 +223,7 @@ const createSolutions = async (input) => {
                 packageContent += `Package: ${courseInstance.courseNum}-${courseInstance.index}\n`;
 
                 // Write the Conflicts line for the current instance directly from the JSON data
-                const conflicts = courseInstance.conflicts?.join(', ') || '';
+                const conflicts = courseInstance.conflicts?.join(',') || '';
                 packageContent += `Conflicts: ${conflicts}\n\n`;
             });
         });
@@ -233,6 +233,7 @@ const createSolutions = async (input) => {
 
         selectedCourseValues.forEach(value => {
             const courseInstances = courseMap.get(value);
+            //console.log(courseInstances);
             if (courseInstances && courseInstances.length > 1) {
                 // If there are duplicates, join them with |
                 const courseWithIndexes = courseInstances.map(course => `${course.courseNum}-${course.index}`).join(' | ');
@@ -244,8 +245,8 @@ const createSolutions = async (input) => {
         });
 
         // Combine the installCourses array into the final installation plan string
-        packageContent += 'Install: ' + installCourses.join(', ');
-        console.log(packageContent);
+        packageContent += 'Install: ' + installCourses.join(',');
+        //console.log(packageContent);
         const tempFilePath = path.join(process.cwd(), 'temp_packages2.dep');
         fs.writeFileSync(tempFilePath, packageContent);
 

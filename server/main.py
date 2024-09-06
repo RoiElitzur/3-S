@@ -297,9 +297,19 @@ def print_installation_plan(required_packages):
 
 def insert_blocking_model(selected_packages):
     # Create a list of Not(symbol) for each package that was selected in the current solution
-    blocking_clauses = [Not(symbol_exist(package)) for package in selected_packages]
-    # Add the blocking clause to the solver to block the current solution
-    solver.add_assertion(Or(blocking_clauses))
+    #blocking_clauses = [Not(symbol_exist(package)) for package in selected_packages]
+    #
+    # # Add the blocking clause to the solver to block the current solution
+    # solver.add_assertion(Or(blocking_clauses))
+
+    # Insert all symbol into list
+    symbols = [symbol_exist(package) for package in selected_packages]
+    # Create expression of ands between all symbols of current solution
+    andExpression = And(symbols)
+    # Wrap the and expression with Not in order for not using the same solution again
+    notAndExpression = Not(andExpression)
+    # Add the new assertion for the solver
+    solver.add_assertion(notAndExpression)
 
 if __name__ == '__main__':
     install_packages = {}
