@@ -77,7 +77,6 @@ function SolutionTable () {
                 }
 
                 const data = await res.json(); // Assuming the response is JSON
-                console.log(data);
                 setNames(data);
 
             } catch (error) {
@@ -90,6 +89,7 @@ function SolutionTable () {
 
     try {
         solution.forEach(course => {
+            console.log(course)
             const dayIndex = getDayIndex(course.day);
             const startTimeIndex = getTimeSlotIndex(course.startTime);
             const endTimeIndex = getTimeSlotIndex(course.endTime);
@@ -99,10 +99,6 @@ function SolutionTable () {
                     if (table[i]) {
                         table[i][dayIndex] = course.courseName;
                     }
-                }
-                // To ensure the course ends at the end of the endTimeIndex slot
-                if (endTimeIndex + 1 < table.length) {
-                    table[endTimeIndex + 1][dayIndex] = '';
                 }
             } else {
                 console.error('Invalid indices calculated:', { dayIndex, startTimeIndex, endTimeIndex });
