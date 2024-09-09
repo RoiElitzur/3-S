@@ -100,3 +100,109 @@ function Solutions() {
 }
 
 export default Solutions;
+
+
+
+
+// import './Solutions.css';
+// import { useNavigate, useLocation } from "react-router-dom";
+// import { useEffect, useState } from 'react';
+//
+// function Solutions() {
+//     const navigate = useNavigate();
+//     const location = useLocation();
+//     const [solutions, setSolutions] = useState({ unlimited: [], dayLimited: [], partialCourses: [] });
+//
+//     const [currentPage, setCurrentPage] = useState(1);
+//     const [itemsPerPage] = useState(10);
+//
+//     useEffect(() => {
+//         // Retrieve solutions from local storage if available
+//         const storedSolutions = localStorage.getItem('solutions');
+//         if (storedSolutions) {
+//             console.log("inside");
+//             const parsedSolutions = JSON.parse(storedSolutions);
+//             console.log("parsed solution are:")
+//             console.log(parsedSolutions);
+//             setSolutions({
+//                 unlimited: parsedSolutions.unlimited || [],
+//                 dayLimited: parsedSolutions.dayLimited || [],
+//                 partialCourses: parsedSolutions.partialCourses || []
+//             });
+//         } else if (location.state?.solutions) {
+//             // Store solutions in local storage
+//             const parsedSolutions = JSON.parse(location.state.solutions);
+//             localStorage.setItem('solutions', JSON.stringify(parsedSolutions));
+//             setSolutions({
+//                 unlimited: parsedSolutions.unlimited || [],
+//                 dayLimited: parsedSolutions.dayLimited || [],
+//                 partialCourses: parsedSolutions.partialCourses || []
+//             });
+//         }
+//     }, [location.state?.solutions]);
+//
+//     const handleSelectSolution = (solution) => {
+//         const dependencies = solution.map(course => course.dependencies).flat();
+//         navigate('/solution', { state: { solution, dependencies } });
+//     };
+//
+//     const handleGoBack = () => {
+//         localStorage.removeItem('solutions');
+//         navigate('/preferences');
+//     };
+//
+//     const handleLogout = () => {
+//         localStorage.removeItem('solutions');
+//         navigate('/');
+//     };
+//
+//
+//     const renderSolutionRows = (solutions, type) => {
+//         const offset = currentPage * itemsPerPage;
+//         // console.log(solutions);
+//         solutions = JSON.parse(solutions);
+//         const solutionsToDisplay = solutions.slice(offset - itemsPerPage, offset);
+//         // console.log(solutionsToDisplay);
+//         if (!Array.isArray(solutionsToDisplay)) {
+//             console.error('Expected an array but got:', solutionsToDisplay);
+//             return <p>Error: No valid solutions to display</p>;
+//         }
+//
+//         return solutionsToDisplay.map((solution, index) => (
+//             <div key={index} className="table-row">
+//                 {solution.map(course => (
+//                     <div key={course._id} className="table-item">
+//                         {course.courseName} - {course.day} {course.startTime}-{course.endTime}
+//                     </div>
+//                 ))}
+//             </div>
+//         ));
+//     };
+//
+//
+//     return (
+//         <div className="background-container">
+//             <div className="solutions-container">
+//                 <h1 className="headline-solutions">Solutions</h1>
+//                 <div className="button-container">
+//                     <button onClick={handleGoBack} className="action-button">Back to Preferences</button>
+//                     <button onClick={handleLogout} className="action-button">Logout</button>
+//                 </div>
+//                 {['unlimited', 'dayLimited', 'partialCourses'].map((type) => (
+//                     <div key={type} className="solutions-table">
+//                         <div className="table-header">
+//                             <div className="header-item">Solution Type</div>
+//                             <div className="header-item">Action</div>
+//                         </div>
+//                         {solutions[type].length > 0 ? renderSolutionRows(solutions[type], type) : <p>No {type} solutions available</p>}
+//                     </div>
+//                 ))}
+//             </div>
+//         </div>
+//     );
+// }
+//
+// export default Solutions;
+
+
+

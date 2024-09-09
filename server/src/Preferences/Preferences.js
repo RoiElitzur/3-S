@@ -10,11 +10,9 @@ function Preferences() {
     const [courses, setCourses] = useState([]);
     const [coursesBySemester, setCoursesBySemester] = useState([]);
     const [selectedCourses, setSelectedCourses] = useState([]);
-    const [numCoursesToGiveUpOptions, setNumCoursesToGiveUpOptions] = useState([]);
     const [mustCoursesOptions, setMustCoursesOptions] = useState([]);
-    const [selectedMustCourses, setSelectedMustCourses] = useState([]);
+    const [selectedExcludedCourses, setSelectedExcludedCourses] = useState([]);
     const [selectedNumDays, setSelectedNumDays] = useState();
-    const [daysOrCourses, setDaysOrCourses] = useState();
 
     const handleLogout = () => {
         navigate('/'); // Redirect to landing page after logout
@@ -57,11 +55,6 @@ function Preferences() {
     }, []);
 
     useEffect(() => {
-        const giveUpOptions = Array.from({ length: selectedCourses.length + 1 }, (_, i) => ({
-            value: i,
-            label: i.toString(),
-        }));
-        setNumCoursesToGiveUpOptions(giveUpOptions);
 
         const mustCourses = selectedCourses.map(course => ({
             value: course.value,
@@ -100,8 +93,8 @@ function Preferences() {
         filterCourses();
     }, [courses, selectedYear, selectedSemester]);
 
-    const handleChangeMustCourses = (selectedOptions) => {
-        setSelectedMustCourses(selectedOptions);
+    const handleChangeExcludedCourses = (selectedOptions) => {
+        setSelectedExcludedCourses(selectedOptions);
     };
 
     const handleSelectYearChange = (selectedOptions) => {
@@ -111,7 +104,7 @@ function Preferences() {
     const handleSelectSemesterChange = (selectedOptions) => {
         setSelectedSemester(selectedOptions);
         setCoursesBySemester(courses.filter(course => course.semester === selectedOptions.value));
-        setSelectedMustCourses([]);
+        setSelectedExcludedCourses([]);
         setSelectedCourses([]);
     };
 
@@ -123,10 +116,6 @@ function Preferences() {
         setSelectedNumDays(selectedOptions);
     };
 
-    const handleChangeDaysOrCourses = (selectedOptions) => {
-        setDaysOrCourses(selectedOptions);
-    };
-
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -136,9 +125,7 @@ function Preferences() {
             selectedSemester: selectedSemester ? selectedSemester.value : null,
             selectedCourses: selectedCourses,
             numDays: selectedNumDays,
-            daysOrCourses: daysOrCourses,
-            giveUpOptions: numCoursesToGiveUpOptions,
-            mustCourses: selectedMustCourses,
+            excludedCourses: selectedExcludedCourses
         };
 
         try {
@@ -176,6 +163,7 @@ function Preferences() {
             const dependencies = await additionalRes.text();
             // Navigate to the new page with both results
             navigate('/solutions', { state: { 'solutions': solution, 'dependencies': dependencies } });
+            // navigate('/solutions', { state: { 'solutions':{'unlimited': solution}, 'dependencies': dependencies } });
 
         } catch (error) {
             console.error("Error during HTTP requests:", error);
@@ -247,8 +235,7 @@ function Preferences() {
                             { value: '2', label: '2' },
                             { value: '3', label: '3' },
                             { value: '4', label: '4' },
-                            { value: '5', label: '5' },
-                            { value: '6', label: '6' }
+                            { value: '5', label: '5' }
                         ]}
                         value={selectedNumDays}
                         onChange={handleSelectChangeNumDays}
@@ -256,39 +243,14 @@ function Preferences() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="less-days-more-courses">More courses or fewer days</label>
-                    <Select
-                        id="less-days-more-courses"
-                        name="less-days-more-courses"
-                        className="input-field"
-                        options={[
-                            { value: '0', label: 'More courses' },
-                            { value: '1', label: 'Less days' }
-                        ]}
-                        value={daysOrCourses}
-                        onChange={handleChangeDaysOrCourses}
-                        placeholder="Select option..."
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="courses-to-give-up">How many courses are you willing to give up, if any</label>
-                    <Select
-                        id="courses-to-give-up"
-                        name="courses-to-give-up"
-                        className="input-field"
-                        options={numCoursesToGiveUpOptions}
-                        placeholder="Enter amount of courses"
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="courses-must-be-in-schedule">Courses that must be included in the schedule</label>
+                    <label htmlFor="courses-must-be-in-schedule">Courses that can be excluded from the schedule</label>
                     <Select
                         id="courses-must-be-in-schedule"
                         name="courses-must-be-in-schedule"
                         className="input-field"
                         isMulti
-                        value={selectedMustCourses}
-                        onChange={handleChangeMustCourses}
+                        value={selectedExcludedCourses}
+                        onChange={handleChangeExcludedCourses}
                         options={mustCoursesOptions}
                         placeholder="Choose courses"
                     />

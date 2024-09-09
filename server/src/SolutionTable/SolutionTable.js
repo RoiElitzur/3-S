@@ -89,7 +89,7 @@ function SolutionTable () {
 
     try {
         solution.forEach(course => {
-            console.log(course)
+            // console.log(course)
             const dayIndex = getDayIndex(course.day);
             const startTimeIndex = getTimeSlotIndex(course.startTime);
             const endTimeIndex = getTimeSlotIndex(course.endTime);

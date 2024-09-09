@@ -83,6 +83,15 @@ body {
     overflow-y: auto; /* Add vertical scrolling */
 }
 
+/*.solutions-table {*/
+/*    width: 100%;*/
+/*    display: grid;*/
+/*    grid-template-columns: 3fr 1fr; !* Adjusted to fit two columns now *!*/
+/*    gap: 10px;*/
+/*    max-height: 500px; !* Limit the height of the table *!*/
+/*    overflow-y: auto; !* Add vertical scrolling *!*/
+/*}*/
+
 .table-header, .table-row {
     display: contents;
 }
