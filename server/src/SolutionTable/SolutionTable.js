@@ -5,10 +5,9 @@ import { useState, useEffect } from 'react';
 
 function SolutionTable () {
     const location = useLocation();
-    const { solution = [], dependencies = {} } = location.state || {};
+    const { solution = [] } = location.state || {};
     const [names, setNames] = useState([]);
     // console.log('Solution:', solution);
-    // console.log('Dependencies:', dependencies);
     const navigate = useNavigate();
 
     const handleGoBackToSolutions = () => {

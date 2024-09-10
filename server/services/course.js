@@ -206,7 +206,27 @@ const createSolutions = async (input) => {
                     solutions.push([...currentSolution]);
                 }
 
-                resolve(solutions);
+                const detailedSolutions = solutions.map(solution => {
+                    const courseDetails = solution.map(courseNum => {
+                        const index = courseNum.slice(-1); // Get the last character (index)
+                        const baseCourseNum = courseNum.slice(0, -2); // Get all characters except the last one
+                        return { baseCourseNum, index };
+                    });
+
+                    return courseDetails.map(({ baseCourseNum, index }) => {
+                        return courses.find(course => {
+                            const indexStr = String(course.index).trim();
+                            return course.courseNum === baseCourseNum && indexStr === index;
+                        });
+                    }).filter(course => course !== undefined); // Remove undefined entries
+                });
+
+                console.log(detailedSolutions);
+                resolve(Array.isArray(detailedSolutions) ? detailedSolutions : []);
+
+
+
+                resolve(detailedSolutions);
             });
 
             pythonProcess.on('error', (error) => {

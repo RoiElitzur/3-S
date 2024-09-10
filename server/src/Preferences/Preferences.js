@@ -145,25 +145,25 @@ function Preferences() {
 
             const solution = await res.text();
 
-            // Second HTTP request
-            const additionalRes = await fetch('http://localhost:12345/Courses/dependencies', {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-
-            if (additionalRes.status !== 200) {
-                // Handle error
-                console.error('Error submitting dependencies data');
-                return;
-            }
-
-            const dependencies = await additionalRes.text();
+            // // Second HTTP request
+            // const additionalRes = await fetch('http://localhost:12345/Courses/dependencies', {
+            //     method: "POST",
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(data),
+            // });
+            //
+            // if (additionalRes.status !== 200) {
+            //     // Handle error
+            //     console.error('Error submitting dependencies data');
+            //     return;
+            // }
+            //
+            // const dependencies = await additionalRes.text();
             // Navigate to the new page with both results
-            navigate('/solutions', { state: { 'solutions': solution, 'dependencies': dependencies } });
-            // navigate('/solutions', { state: { 'solutions':{'unlimited': solution}, 'dependencies': dependencies } });
+            console.log(solution);
+            navigate('/solutions', { state: { 'solutions123': solution } });
 
         } catch (error) {
             console.error("Error during HTTP requests:", error);
