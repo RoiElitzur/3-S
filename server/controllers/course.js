@@ -7,7 +7,7 @@ const getCourses = async(req,res) =>{
 
 const createSolutions = async(req,res) => {
     try {
-        const solutions = await courseService.createSolutions(req.body);
+        const solutions = await courseService.generateAllSolutions(req.body);
         res.status(200).json(solutions); // Send the JSON response to the client
     } catch (error) {
         console.error('Error in controller:', error);
