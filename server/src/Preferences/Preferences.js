@@ -163,7 +163,7 @@ function Preferences() {
             // const dependencies = await additionalRes.text();
             // Navigate to the new page with both results
             console.log(solution);
-            navigate('/solutions', { state: { 'solutions123': solution } });
+            navigate('/solutions', { state: { 'solutions7': solution } });
 
         } catch (error) {
             console.error("Error during HTTP requests:", error);
@@ -252,6 +252,7 @@ function Preferences() {
                         value={selectedExcludedCourses}
                         onChange={handleChangeExcludedCourses}
                         options={mustCoursesOptions}
+                        closeMenuOnSelect={false}
                         placeholder="Choose courses"
                     />
                 </div>

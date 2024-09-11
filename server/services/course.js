@@ -81,6 +81,38 @@ const createSolutionsWithExclusions = async (input) => {
     }
 };
 
+const filterSolutionsByDays = (solutions, selectedDaysLimit) => {
+    return solutions.filter(solution => {
+        let days = solution.map(course => course.day);
+        console.log("days is");
+        console.log(days);
+        let uniqueDays = new Set(days);
+        console.log("uniqueDays is");
+        console.log(uniqueDays);
+        return uniqueDays.size <= selectedDaysLimit;
+    });
+};
+
+
+const createSolutionsWithDaysLimitation =  (input, solutionsWithoutExclusions) => {
+    try {
+        const selectedDaysLimit = input.numDays?.value;
+        if (selectedDaysLimit == null) {
+            return [];
+        }
+        console.log("selected days limit is:");
+        console.log(selectedDaysLimit);
+
+        return filterSolutionsByDays(solutionsWithoutExclusions, selectedDaysLimit)
+
+    } catch (error) {
+        console.error('Error in createSolutionsWithDaysLimitation:', error);
+    }
+};
+
+
+
+
 // Main function to generate all solutions (with and without exclusions)
 const generateAllSolutions = async (input) => {
     try {
@@ -90,9 +122,14 @@ const generateAllSolutions = async (input) => {
         // Generate solutions with exclusions
         const solutionsWithExclusions = await createSolutionsWithExclusions(input);
 
+        // Generate solutions with days limit
+        const solutionsWithDaysLimit =  await createSolutionsWithDaysLimitation(input, solutionsWithoutExclusions);
+
+
         return {
             noExclusions: solutionsWithoutExclusions, // Key for solutions without exclusions
-            withExclusions: solutionsWithExclusions // Key for solutions with exclusions
+            withExclusions: solutionsWithExclusions, // Key for solutions with exclusions
+            daysLimit: solutionsWithDaysLimit // Key for solutions with days limit
         };
     } catch (error) {
         console.error('Error in generateAllSolutions:', error);
@@ -221,7 +258,7 @@ const createSolutions = async (input) => {
                     }).filter(course => course !== undefined); // Remove undefined entries
                 });
 
-                console.log(detailedSolutions);
+                //console.log(detailedSolutions);
                 resolve(Array.isArray(detailedSolutions) ? detailedSolutions : []);
 
 

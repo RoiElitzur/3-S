@@ -14,20 +14,22 @@ function Solutions() {
 
     useEffect(() => {
         // Retrieve solutions from local storage if available
-        const storedSolutions = localStorage.getItem('solutions123');
+        const storedSolutions = localStorage.getItem('solutions7');
         if (storedSolutions) {
             const afterParse = JSON.parse(storedSolutions);
             //setSolutions(afterParse);
             setSolutionsWithoutDemands(afterParse.noExclusions);
             setSolutionsWithExcludedCourses(afterParse.withExclusions);
-        } else if (location.state?.solutions123) {
+            setSolutionsWithDaysLimit(afterParse.daysLimit);
+        } else if (location.state?.solutions7) {
             // Store solutions in local storage
-            const parsedSolutions = JSON.parse(location.state.solutions123);
-            localStorage.setItem('solutions123', JSON.stringify(parsedSolutions));
+            const parsedSolutions = JSON.parse(location.state.solutions7);
+            localStorage.setItem('solutions7', JSON.stringify(parsedSolutions));
             setSolutionsWithoutDemands(parsedSolutions.noExclusions);
             setSolutionsWithExcludedCourses(parsedSolutions.withExclusions);
+            setSolutionsWithDaysLimit(parsedSolutions.daysLimit);
         }
-    }, [location.state?.solutions123]);
+    }, [location.state?.solutions7]);
 
     const handleSelectSolution = (solution) => {
         // Navigate to the solution-table route, passing the selected solution and dependencies
@@ -36,13 +38,13 @@ function Solutions() {
 
     const handleGoBack = () => {
         // Clear solutions from local storage when navigating back to preferences
-        localStorage.removeItem('solutions123');
+        localStorage.removeItem('solutions7');
         navigate('/preferences');
     };
 
     const handleLogout = () => {
         // Clear solutions from local storage on logout
-        localStorage.removeItem('solutions123');
+        localStorage.removeItem('solutions7');
         navigate('/');
     };
 
@@ -61,9 +63,10 @@ function Solutions() {
 
     // const NoDemandsTotalPages = Math.ceil(solutionsWithoutDemands.length / itemsPerPage);
 
-//
 
     function renderTable(solutions) {
+        console.log("in render:");
+        console.log(solutions);
         return (
             <>
                 <div className="table-header">
@@ -76,7 +79,7 @@ function Solutions() {
                             <div className="table-item">Solution {index + 1}</div>
                             <div className="table-item">
                                 <button onClick={() => handleSelectSolution(solution)} className="view-button">
-                                    View
+                                    Views
                                 </button>
                             </div>
                         </div>
