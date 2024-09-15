@@ -144,24 +144,7 @@ function Preferences() {
             }
 
             const solution = await res.text();
-
-            // // Second HTTP request
-            // const additionalRes = await fetch('http://localhost:12345/Courses/dependencies', {
-            //     method: "POST",
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(data),
-            // });
-            //
-            // if (additionalRes.status !== 200) {
-            //     // Handle error
-            //     console.error('Error submitting dependencies data');
-            //     return;
-            // }
-            //
-            // const dependencies = await additionalRes.text();
-            // Navigate to the new page with both results
+            // Navigate to the new page with the results
             console.log(solution);
             navigate('/solutions', { state: { 'solutions7': solution } });
 
