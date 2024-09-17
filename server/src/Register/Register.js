@@ -82,8 +82,8 @@ function Register(props) {
                     </div>
                     <input type="text" className="input-field" placeholder="Username" ref={inputUserName}/>
                     <input type="email" className="input-field" placeholder="Email" ref={inputEmail}/>
-                    <input type="password" className="input-field" placeholder="Confirm password" ref={inputPassword}/>
-                    <input type="password" className="input-field" placeholder="Renter password" ref={inputPasswordValidation}/>
+                    <input type="password" className="input-field" placeholder="Enter password" ref={inputPassword}/>
+                    <input type="password" className="input-field" placeholder="Confirm password" ref={inputPasswordValidation}/>
                     <br></br>
                     <button type="submit" className="primary-button">Sign Up</button>
                 </form>

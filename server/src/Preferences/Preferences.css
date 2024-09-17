@@ -32,6 +32,15 @@ body, html {
     color: white;
 }
 
+.error-message {
+    color: white; /* Set text color to white */
+    font-weight: bold; /* Make text bold */
+    background-color: #ff4d4d; /* Optional: Add a background color to make the error stand out */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px; /* Add spacing */
+}
+
 /* Form container styling */
 .preferences-form {
     display: flex;

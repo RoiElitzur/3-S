@@ -29,6 +29,7 @@ const getNames = async (input) => {
         throw error;
     }
 };
+
 // Helper function to generate all subsets of selectedExcludedCourses
 const getSubsets = (excludedCourses) => {
     const subsets = [[]];
@@ -56,18 +57,23 @@ const createSolutionsWithExclusions = async (input) => {
         const excludedSubsets = getSubsets(selectedExcludedCourses);
         const solutionsWithExclusions = [];
 
-        // Iterate over each subset of excluded courses
         for (const excludedSubset of excludedSubsets) {
 
             const adjustedCourseValues = selectedCourseValues.filter(course =>
                 !excludedSubset.some(excluded => excluded.value === course)
             );
+
+            // If adjustedCourseValues is empty, continue to the next iteration
+            if (adjustedCourseValues.length === 0) {
+                continue;
+            }
+
             // Adjust the input object for each case
             const adjustedInput = {
                 ...input,
                 selectedCourses: adjustedCourseValues.map(course => ({ value: course })),
             };
-            // console.log(adjustedInput);
+
             // Call createSolutions with adjusted course values
             const solution = await createSolutions(adjustedInput);
             solution.forEach(sol => {
@@ -84,11 +90,7 @@ const createSolutionsWithExclusions = async (input) => {
 const filterSolutionsByDays = (solutions, selectedDaysLimit) => {
     return solutions.filter(solution => {
         let days = solution.map(course => course.day);
-        console.log("days is");
-        console.log(days);
         let uniqueDays = new Set(days);
-        console.log("uniqueDays is");
-        console.log(uniqueDays);
         return uniqueDays.size <= selectedDaysLimit;
     });
 };
@@ -100,8 +102,6 @@ const createSolutionsWithDaysLimitation =  (input, solutionsWithoutExclusions) =
         if (selectedDaysLimit == null) {
             return [];
         }
-        console.log("selected days limit is:");
-        console.log(selectedDaysLimit);
 
         return filterSolutionsByDays(solutionsWithoutExclusions, selectedDaysLimit)
 
@@ -183,6 +183,7 @@ const createSolutions = async (input) => {
         let installCourses = [];
         selectedCourseValues.forEach(value => {
             const courseInstances = courseMap.get(value);
+            // create the logic which based on that ,the algorithm will choose one instance from all possibilities for specific course
             if (courseInstances && courseInstances.length > 1) {
                 const courseWithIndexes = courseInstances.map(course => `${course.courseNum}-${course.index}`).join(' | ');
                 installCourses.push(courseWithIndexes);
@@ -223,6 +224,7 @@ const createSolutions = async (input) => {
                 } else {
                     console.warn(`File ${tempFilePath} not found, cannot delete.`);
                 }
+
                 const lines = output.split('\n');
                 const solutions = [];
                 let currentSolution = [];
@@ -276,78 +278,4 @@ const createSolutions = async (input) => {
 };
 
 
-const getDependencies = async (input) => {
-    try {
-        const selectedCourseValues = input.selectedCourses.map(course => course.value);
-        const courses = await Course.find({});
-        let packageContent = '';
-
-        courses.forEach(course => {
-            packageContent += `Package: ${course.courseNum}\n`;
-
-            if (course.dependencies && course.dependencies.length > 0) {
-                const dependencies = course.dependencies.join(', ');
-                packageContent += `Depends: ${dependencies}\n`;
-            } else {
-                packageContent += `Depends: \n`;
-            }
-
-            if (course.conflicts && course.conflicts.length > 0) {
-                const conflicts = course.conflicts.join(', ');
-                packageContent += `Conflicts: ${conflicts}\n`;
-            } else {
-                packageContent += `Conflicts: \n`;
-            }
-
-            packageContent += '\n';
-        });
-
-        packageContent += 'Install: ' + selectedCourseValues.join(', ') + '\n';
-
-        const tempFilePath = path.join(process.cwd(), 'temp_packages.dep');
-        fs.writeFileSync(tempFilePath, packageContent);
-
-        const pythonScriptPath = path.join(process.cwd(), 'findDepends.py');
-
-        return new Promise((resolve, reject) => {
-            let output = "";
-
-            const pythonProcess = spawn('python', [pythonScriptPath, tempFilePath]);
-
-            pythonProcess.stdout.on('data', (data) => {
-                output += data;
-            });
-
-            pythonProcess.stderr.on('data', (data) => {
-                console.error(`stderr: ${data}`);
-            });
-
-            pythonProcess.on('close', (code) => {
-                console.log(`Python script exited with code ${code}`);
-
-                // Check if the file exists before attempting to delete it
-                if (fs.existsSync(tempFilePath)) {
-                    fs.unlinkSync(tempFilePath);
-                } else {
-                    console.warn(`File ${tempFilePath} not found, cannot delete.`);
-                }
-
-                const lines = output.split('\n');
-                const startIndex = lines.findIndex(line => line.includes('dependencies:')) + 1;
-                const courseLines = lines.slice(startIndex).filter(line => line.trim() !== '');
-                const courseNumbers = courseLines.map(line => line.trim());
-                const filteredCourses = courses.filter(course => courseNumbers.includes(course.courseNum));
-
-                resolve(filteredCourses);
-            });
-
-            pythonProcess.on('error', (error) => {
-                reject(error); // Reject the promise if there's an error
-            });
-        });
-    } catch (error) {
-        console.error('Error:', error);
-    }
-};
-
-export default { getCourses, createSolutions, getDependencies, getNames,generateAllSolutions };
+export default { getCourses, createSolutions, getNames,generateAllSolutions };

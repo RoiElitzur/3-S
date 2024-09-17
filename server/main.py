@@ -55,7 +55,6 @@ def check_conflict(formula):
         # Convert to Or and then negate to properly represent conflicts
         return Not(formula)
     return 0
-
 def build_package_formula(package_name, depends_formula, conflicts_formula):
     if depends_formula == 0 and conflicts_formula == 0:
         return Implies(symbol_exist(package_name), TRUE())
@@ -73,15 +72,12 @@ def from_package_to_formula(packages, install_packages):
         depends_formula = check_depends(parsing_expression_to_formula(package_info["Depends"]))
         conflicts_formula = check_conflict(parsing_expression_to_formula_conflicts(package_info["Conflicts"]))
         package_formula = build_package_formula(package_name, depends_formula, conflicts_formula)
-#         print(package_formula)
         solver.add_assertion(package_formula)
         packages_info[package_name] = package_info
 
     # Process installation packages
     install_packages['val'] = install_packages['val'].replace(' ', '')
     install_formula = parsing_expression_to_formula(install_packages['val'])
-#     print(install_formula)
-#     print(f"Install Formula: {install_formula}")  # Debug print statement
     solver.add_assertion(install_formula)
 
 
@@ -105,8 +101,7 @@ def open_and_parse_file(file_path, install_package):
         print(f"Error reading file: {e}")
         return {}
 
-# def extract_installation_plan(model, install_packages):
-#     return [name for name in install_packages if model.get_value(symbol_exist(name)) == TRUE()]
+
 def extract_installation_plan(model, install_packages):
     package_string = install_packages.get('val', '')
     and_groups = package_string.split(',')
@@ -123,38 +118,12 @@ def extract_installation_plan(model, install_packages):
                 break
     return result
 
-def bfs_dependencies(start_packages):
-    visited = set()
-    queue = deque(start_packages)
-    required_packages = set(start_packages)
-
-    while queue:
-        current_package = queue.popleft()
-        if current_package not in visited:
-            visited.add(current_package)
-            if current_package in packages_info:
-                package_info = packages_info[current_package]
-                depends = package_info.get("Depends", "").split(",")
-                for dep in depends:
-                    dep = dep.strip()
-                    if dep and dep not in visited:
-                        required_packages.add(dep)
-                        queue.append(dep)
-
-    return required_packages
-
 def print_installation_plan(required_packages):
     print("Installation plan with required dependencies:")
     for package in required_packages:
         print(package)
 
 def insert_blocking_model(selected_packages):
-    # Create a list of Not(symbol) for each package that was selected in the current solution
-    #blocking_clauses = [Not(symbol_exist(package)) for package in selected_packages]
-    #
-    # # Add the blocking clause to the solver to block the current solution
-    # solver.add_assertion(Or(blocking_clauses))
-
     # Insert all symbol into list
     symbols = [symbol_exist(package) for package in selected_packages]
     # Create expression of ands between all symbols of current solution
@@ -168,14 +137,10 @@ if __name__ == '__main__':
     install_packages = {}
     packages = open_and_parse_file(sys.argv[1], install_packages)
     from_package_to_formula(packages, install_packages)
-#     print("Assertions in the solver:")
-#     for assertion in solver.assertions:
-#         print(assertion.serialize())
     is_sat = solver.solve()
     while is_sat:
         model = solver.get_model()
-        installation_plan = extract_installation_plan(model, install_packages)
-        required_packages = bfs_dependencies(installation_plan)
+        required_packages = set(extract_installation_plan(model, install_packages))
         print_installation_plan(required_packages)
         insert_blocking_model(required_packages)
         is_sat = solver.solve()

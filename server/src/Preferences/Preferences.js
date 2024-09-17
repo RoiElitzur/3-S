@@ -13,7 +13,7 @@ function Preferences() {
     const [mustCoursesOptions, setMustCoursesOptions] = useState([]);
     const [selectedExcludedCourses, setSelectedExcludedCourses] = useState([]);
     const [selectedNumDays, setSelectedNumDays] = useState();
-
+    const [errorMessage, setErrorMessage] = useState(null);
     const handleLogout = () => {
         navigate('/'); // Redirect to landing page after logout
     };
@@ -119,6 +119,14 @@ function Preferences() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        // Validate if year, semester, and courses are selected
+        if (!selectedYear || !selectedSemester || selectedCourses.length === 0) {
+            setErrorMessage('Please select a year, semester, and at least one course.');
+            return; // Do not proceed with submission
+        }
+
+        // Clear error message
+        setErrorMessage(null);
         // Create the data object with selected year and semester
         const data = {
             selectedYear: selectedYear,
@@ -160,6 +168,7 @@ function Preferences() {
                 <button onClick={handleLogout} className="back-button">Logout</button>
             </div>
             <form className="preferences-form" onSubmit={handleSubmit}>
+                {errorMessage && <div className="error-message">{errorMessage}</div>} {/* Display error message if any */}
                 <div className="form-group">
                     <label htmlFor="chosen-year">Choose year</label>
                     <Select
